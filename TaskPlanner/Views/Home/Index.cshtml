@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to TaskPlanner</h1>
+</div>
+
+@if (!this.User.Identity.IsAuthenticated)
+{
+    <div class="jumbotron w-75 mx-auto">
+        <hr class="hr-2 bg-dark" />
+        <h3 class="mt-4"><a href="/Identity/Account/Login">Login</a></h3>
+        <h3 class="mt-4"><a href="/Identity/Account/Register">Register</a> if you don't have an account.</h3>
+    </div>
+}
+else
+{
+<div class="jumbotron color-white w-75 mx-auto">
+    <h1 class="text-center">Welcome, @this.User.Identity.Name</h1>
+    <hr class="hr-2 bg-secondary" />
+    <h3 class="display-4">Start your planning skills now.</h3>
+    <h3 class="mt-4"><a href="/Team/ProjectManager">For Project Managers</a></h3>
+    <h3 class="mt-4"><a href="/Team/Employee">For Employees</a></h3>
+</div>
+}
