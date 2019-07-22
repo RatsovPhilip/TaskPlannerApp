@@ -15,6 +15,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaskPlanner.Data\TaskPlanner.Data.csproj" />
+    <ProjectReference Include="..\TaskPlanner.Service\TaskPlanner.Service.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Views\Employee\" />
   </ItemGroup>
 
 </Project>

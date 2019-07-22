@@ -11,6 +11,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using TaskPlanner.Data;
     using TaskPlanner.Data.Models;
+    using TaskPlanner.Service;
 
     public class Startup
     {
@@ -50,6 +51,8 @@
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddTransient<ICompanyService, CompanyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
