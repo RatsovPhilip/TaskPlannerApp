@@ -70,7 +70,7 @@ namespace TaskPlanner.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/FirstLogIn/Create");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.FullName, Email = Input.Email };
+                var user = new ApplicationUser { UserName=Input.Email,FullName = Input.FullName, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

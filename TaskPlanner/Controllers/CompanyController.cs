@@ -35,10 +35,12 @@ namespace TaskPlanner.Controllers
                 };
 
                 this.companyService.CreateCompany(company);
+
+                return Redirect("/");
             }
 
             
-            return Redirect("/");
+            return this.View();
         }
 
     }
