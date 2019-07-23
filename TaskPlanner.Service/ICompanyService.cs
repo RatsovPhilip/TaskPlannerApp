@@ -8,5 +8,7 @@ namespace TaskPlanner.Service
     public interface ICompanyService
     {
         void CreateCompany(Company company);
+
+        bool CheckIfCompanyNameIsAvailable(string name);
     }
 }

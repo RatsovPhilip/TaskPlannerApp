@@ -15,16 +15,24 @@ namespace TaskPlanner.Service
         {
             this.dbContext = dbContext;
         }
-        public void CreateCompany(Company company)
+
+        public bool CheckIfCompanyNameIsAvailable(string name)
         {
             var companies = this.dbContext.Companies.Select(x => x.Name).ToList();
-            foreach(var companyName in companies)
+
+            foreach (var companyName in companies)
             {
-                if (companyName == company.Name)
+                if (companyName == name)
                 {
-                    return;
+                    return false;
                 }
             }
+
+            return true;
+        }
+
+        public void CreateCompany(Company company)
+        {
             this.dbContext.Companies.Add(company);
             this.dbContext.SaveChanges();
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskPlanner.CustomValidationAttributes;
 
 namespace TaskPlanner.Models
 {
@@ -11,6 +12,7 @@ namespace TaskPlanner.Models
     {
         [Required]
         [MaxLength(50)]
+        [CheckCompanyName]
         public string Name { get; set; }
     }
 }
