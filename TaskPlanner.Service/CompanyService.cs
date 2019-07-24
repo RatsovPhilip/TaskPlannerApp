@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
 
@@ -31,8 +32,10 @@ namespace TaskPlanner.Service
             return true;
         }
 
-        public void CreateCompany(Company company)
+        public void CreateCompany(Company company,ApplicationUser user)
         {
+            user.CompanyName = company.Name;
+            company.TeamMembers.Add(user);
             this.dbContext.Companies.Add(company);
             this.dbContext.SaveChanges();
         }
