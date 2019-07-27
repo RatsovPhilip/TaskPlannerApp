@@ -2,6 +2,7 @@
 using System.Linq;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
+using TaskPlanner.Service.Common;
 
 namespace TaskPlanner.Service
 {
@@ -13,6 +14,17 @@ namespace TaskPlanner.Service
         {
             this.dbContext = dbContext;
         }
+
+        public void AddAdminRoleIfNoExist()
+        {
+            var role = new IdentityRole()
+            {
+                Name = GlobalConstants.RoleAdmin       
+            };
+            this.dbContext.Roles.Add(role);
+            this.dbContext.SaveChanges();
+        }
+
         public ApplicationUser GetCurrentUser(string currentUserId)
         {
             var user = this.dbContext.Users.FirstOrDefault(x => x.Id == currentUserId);
