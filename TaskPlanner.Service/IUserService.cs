@@ -6,7 +6,5 @@ namespace TaskPlanner.Service
     public interface IUserService
     {
         ApplicationUser GetCurrentUser(string Id);
-
-        void AddAdminRoleIfNoExist();
     }
 }

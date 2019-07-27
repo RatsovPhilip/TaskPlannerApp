@@ -37,8 +37,8 @@
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequiredLength = 6;
             })
-                .AddEntityFrameworkStores<TaskPlannerDbContext>()
                 .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<TaskPlannerDbContext>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI(UIFramework.Bootstrap4);
 
