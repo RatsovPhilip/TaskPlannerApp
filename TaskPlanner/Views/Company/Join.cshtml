@@ -1,6 +1,6 @@
 ﻿@model TaskPlanner.Models.CompanyCreateViewModel;
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Join";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,16 +13,6 @@
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FieldOfService"></label>
-                <input asp-for="FieldOfService" class="form-control" />
-                <span asp-validation-for="FieldOfService" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Submit</button>

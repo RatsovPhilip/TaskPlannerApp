@@ -50,8 +50,30 @@ namespace TaskPlanner.Controllers
 
                 return Redirect("/");
             }
+            return this.View();
+        }
 
+        public IActionResult Join()
+        {
+            return this.View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Join(CompanyJoinModel companyModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await this.userManager.GetUserAsync(this.User);
+
+                var company = new Company
+                {
+                    Name = companyModel.Name
+                };
+
+                this.companyService.CreateCompany(company, user);
+
+                return Redirect("/");
+            }
             return this.View();
         }
 

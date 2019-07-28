@@ -15,6 +15,10 @@
 
         public string Name { get; set; }
 
+        public string FieldOfService { get; set; }
+
+        public string Address { get; set; }
+
         public ICollection<ApplicationUser> TeamMembers { get; set; }
 
         public ICollection<Category> Categories { get; set; }

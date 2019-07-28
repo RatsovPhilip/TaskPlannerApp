@@ -11,20 +11,20 @@
         {
 
         }
-        public TaskPlannerDbContext()
-        {
+        //public TaskPlannerDbContext()
+        //{
 
-        }
+        //}
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<DailyAgenda> DailyAgendas { get; set; }
         public DbSet<TimeSheet> TimeSheets { get; set; }
         public DbSet<Company> Companies { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    base.OnConfiguring(optionsBuilder);
+        //}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

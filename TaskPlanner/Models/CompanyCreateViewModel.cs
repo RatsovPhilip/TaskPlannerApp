@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using TaskPlanner.CustomValidationAttributes;
 
 namespace TaskPlanner.Models
@@ -14,5 +9,13 @@ namespace TaskPlanner.Models
         [MaxLength(50)]
         [CheckCompanyName]
         public string Name { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string FieldOfService { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Address { get; set; }
     }
 }
