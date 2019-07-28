@@ -11,10 +11,10 @@
         {
 
         }
-        //public TaskPlannerDbContext()
-        //{
+        public TaskPlannerDbContext()
+        {
 
-        //}
+        }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<DailyAgenda> DailyAgendas { get; set; }

@@ -232,7 +232,15 @@ namespace TaskPlanner.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Date");
+                    b.Property<string>("Description");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.Property<string>("Subject");
+
+                    b.Property<string>("ThemeColor");
 
                     b.Property<string>("TimeSheetId");
 
