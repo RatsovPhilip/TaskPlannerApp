@@ -3,11 +3,11 @@ using TaskPlanner.Service;
 
 namespace TaskPlanner.Controllers
 {
-    public class TimeSheet : Controller
+    public class TimeSheetController : Controller
     {
         private readonly ITimeSheetService timeSheetService;
 
-        public TimeSheet(ITimeSheetService timeSheetService)
+        public TimeSheetController(ITimeSheetService timeSheetService)
         {
             this.timeSheetService = timeSheetService;
         }
@@ -16,10 +16,9 @@ namespace TaskPlanner.Controllers
             return this.View();
         }
 
-        public JsonResult GetEvents()
+        public ActionResult GetEvents()
         {
-            var events = this.timeSheetService.GetEventsFromDB();
-            return Json(events);
+            return new JsonResult(this.timeSheetService.GetEventsFromDB());
         }
     }
 }

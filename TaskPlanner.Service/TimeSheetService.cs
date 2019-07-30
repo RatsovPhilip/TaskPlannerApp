@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace TaskPlanner.Service
         {
             this.dbContext = dbContext;
         }
-        public List<DailyAgenda> GetEventsFromDB()
+        public IEnumerable<DailyAgenda> GetEventsFromDB()
         {
             var events = this.dbContext.DailyAgendas.ToList();
 
