@@ -38,14 +38,15 @@
             $.ajax({
                 type: "GET",
                 url: "/TimeSheet/GetEvents",
+                dataType:"json",
                 success: function (data) {
                     $.each(data, function (i, v) {
                         events.push({
-                            title: v.Subject,
-                            description: v.Description,
-                            start: moment(v.Start),
-                            end: v.End != null ? moment(v.End) : null,
-                            color: v.ThemeColor
+                            title: v.subject,
+                            description: v.description,
+                            start: v.startDate,
+                            end: v.End != null ? v.endDate : null,
+                            color: v.themeColor
                         });
                     })
 
