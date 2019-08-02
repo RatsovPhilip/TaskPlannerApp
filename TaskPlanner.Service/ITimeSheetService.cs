@@ -1,13 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TaskPlanner.Data.Models;
 
 namespace TaskPlanner.Service
 {
     public interface ITimeSheetService
     {
-        IEnumerable<DailyAgenda> GetEventsFromDB();
+        IEnumerable<DailyAgenda> GetAllEventsFromDB();
+
+        DailyAgenda GetEventFromId(DailyAgenda dailyAgenda);
+
+        void DeleteEventFromDb(string eventId);
+
+        void AddNewEvent(DailyAgenda dailyAgenda);
+
+        void UpdateDatabase();
     }
 }
