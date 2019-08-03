@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskPlanner.Data;
 
 namespace TaskPlanner.Data.Migrations
 {
     [DbContext(typeof(TaskPlannerDbContext))]
-    partial class TaskPlannerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190803180352_AddedManyToManyRelation")]
+    partial class AddedManyToManyRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,6 +200,8 @@ namespace TaskPlanner.Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("SubCategory");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DailyAgendaId");
@@ -244,8 +248,6 @@ namespace TaskPlanner.Data.Migrations
                     b.Property<DateTime>("EndDate");
 
                     b.Property<DateTime>("StartDate");
-
-                    b.Property<int>("SubCategory");
 
                     b.Property<string>("Subject");
 

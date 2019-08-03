@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using TaskPlanner.Data.Models.Enums;
 
     public class DailyAgenda
     {
@@ -22,6 +23,8 @@
         public DateTime EndDate { get; set; }
 
         public string ThemeColor { get; set; }
+
+        public SubCategory SubCategory { get; set; }
 
         public ICollection<Category> Categories { get; set; }
     }

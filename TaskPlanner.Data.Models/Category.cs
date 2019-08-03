@@ -15,8 +15,6 @@
 
         public string Name { get; set; }
 
-        public SubCategory SubCategory { get; set; }
-
         public ICollection<CompanyCategory> CompanyCategories { get; set; }
     }
 }

@@ -66,8 +66,8 @@
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<TaskPlannerDbContext>();
                 if (env.IsDevelopment())
                 {
-                    //dbContext.Database.Migrate();
-                    dbContext.Database.EnsureCreated();
+                    dbContext.Database.Migrate();
+                    //dbContext.Database.EnsureCreated();
                 }
             }
 
