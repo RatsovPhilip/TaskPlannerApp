@@ -14,13 +14,15 @@ namespace TaskPlanner.Controllers
         private readonly IUserService userService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public CompanyController(ICompanyService companyService, IUserService userService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public CompanyController(ICompanyService companyService, IUserService userService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
         {
             this.companyService = companyService;
             this.userService = userService;
             this.userManager = userManager;
             this.roleManager = roleManager;
+            this.signInManager = signInManager;
         }
         public IActionResult Create()
         {
@@ -47,8 +49,9 @@ namespace TaskPlanner.Controllers
                 }
 
                 await this.userManager.AddToRoleAsync(user, GlobalConstants.RoleAdmin);
+                await this.signInManager.SignOutAsync();
 
-                return Redirect("/");
+                return Redirect("/Identity/Account/Login");
             }
             return this.View();
         }

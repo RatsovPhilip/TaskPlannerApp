@@ -39,5 +39,10 @@ namespace TaskPlanner.Service
             this.dbContext.Companies.Add(company);
             this.dbContext.SaveChanges();
         }
+
+        public Company GetCompanyByName(string companyName)
+        {
+            return this.dbContext.Companies.FirstOrDefault(c => c.Name == companyName);
+        }
     }
 }

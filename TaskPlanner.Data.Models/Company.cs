@@ -9,7 +9,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.TeamMembers = new HashSet<ApplicationUser>();
-            this.Categories = new HashSet<Category>();
+            this.CompanyCategories = new HashSet<CompanyCategory>();
         }
         public string Id { get; set; }
 
@@ -21,6 +21,7 @@
 
         public ICollection<ApplicationUser> TeamMembers { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<CompanyCategory> CompanyCategories { get; set; }
+
     }
 }

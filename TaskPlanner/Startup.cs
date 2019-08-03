@@ -54,25 +54,22 @@
 
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<ITimeSheetService, TimeSheetService>(); 
+            services.AddTransient<ITimeSheetService, TimeSheetService>();
+            services.AddTransient<IProjectService, ProjectService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //******************************************************
-            //=====> USE THIS WHEN - Database doesn't exist <====
-            //******************************************************
-
-            //using (var serviceScope = app.ApplicationServices.CreateScope())
-            //{
-            //    var dbContext = serviceScope.ServiceProvider.GetRequiredService<TaskPlannerDbContext>();
-            //    if (env.IsDevelopment())
-            //    {
-            //        dbContext.Database.Migrate();
-            //        dbContext.Database.EnsureCreated();
-            //    }
-            //}
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<TaskPlannerDbContext>();
+                if (env.IsDevelopment())
+                {
+                    //dbContext.Database.Migrate();
+                    dbContext.Database.EnsureCreated();
+                }
+            }
 
 
             if (env.IsDevelopment())
