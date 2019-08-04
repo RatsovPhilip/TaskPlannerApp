@@ -67,10 +67,8 @@
                 if (env.IsDevelopment())
                 {
                     dbContext.Database.Migrate();
-                    //dbContext.Database.EnsureCreated();
                 }
             }
-
 
             if (env.IsDevelopment())
             {
