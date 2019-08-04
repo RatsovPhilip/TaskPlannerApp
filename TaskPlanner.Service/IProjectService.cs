@@ -8,5 +8,7 @@ namespace TaskPlanner.Service
     public interface IProjectService
     {
         void AddProject(Category category);
+
+        IEnumerable<Category> GetAllCompanyProjects(string companyName);
     }
 }

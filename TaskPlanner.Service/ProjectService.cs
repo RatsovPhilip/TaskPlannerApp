@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
@@ -18,6 +19,11 @@ namespace TaskPlanner.Service
         {
             this.dbContext.Categories.Add(category);
             this.dbContext.SaveChanges();
+        }
+
+        public IEnumerable<Category> GetAllCompanyProjects(string companyName)
+        {
+            var projects = this.dbContext.Categories.Where(c => c.CompanyCategories.All(cc => cc.Company.Name.Contains(companyName))).ToList();
         }
     }
 }
