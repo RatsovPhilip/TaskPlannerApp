@@ -126,13 +126,13 @@
         function GenerateCalender(events) {
             $('#calender').fullCalendar('destroy');
             $('#calender').fullCalendar({
-                contentHeight: 200,
+                contentHeight: 400,
                 defaultDate: new Date(),
                 timeFormat: 'h(:mm)a',
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'basicWeek'
+                    right: 'basicWeek,month'
                 },
                 eventLimit: true,
                 eventColor: '#378006',

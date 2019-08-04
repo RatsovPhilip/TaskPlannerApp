@@ -38,7 +38,9 @@ namespace TaskPlanner.Controllers
 
                 var company = new Company
                 {
-                    Name = companyModel.Name
+                    Name = companyModel.Name,
+                    FieldOfService = companyModel.FieldOfService,
+                    Address = companyModel.Address
                 };
 
                 this.companyService.CreateCompany(company, user);

@@ -11,6 +11,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
+            this.DailyAgendas = new HashSet<DailyAgenda>();
         }
 
         [Required]
@@ -18,6 +19,8 @@
 
         [Required]
         public string CompanyName { get; set; }
+
+        public ICollection<DailyAgenda> DailyAgendas { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

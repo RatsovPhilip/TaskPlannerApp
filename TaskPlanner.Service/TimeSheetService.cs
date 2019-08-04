@@ -28,7 +28,7 @@ namespace TaskPlanner.Service
             return result;
         }
 
-        public IEnumerable<DailyAgenda> GetAllEventsFromDB()
+        public IEnumerable<DailyAgenda> GetAllEventsOfUserFromDB()
         {
             var events = this.dbContext.DailyAgendas.ToList();
 

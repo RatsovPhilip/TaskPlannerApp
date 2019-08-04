@@ -19,7 +19,7 @@ namespace TaskPlanner.Controllers
 
         public ActionResult GetEvents()
         {
-            return new JsonResult(this.timeSheetService.GetAllEventsFromDB());
+            return new JsonResult(this.timeSheetService.GetAllEventsOfUserFromDB());
         }
 
         [HttpPost]

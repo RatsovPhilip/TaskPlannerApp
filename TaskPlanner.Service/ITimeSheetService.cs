@@ -5,7 +5,7 @@ namespace TaskPlanner.Service
 {
     public interface ITimeSheetService
     {
-        IEnumerable<DailyAgenda> GetAllEventsFromDB();
+        IEnumerable<DailyAgenda> GetAllEventsOfUserFromDB();
 
         DailyAgenda GetEventFromId(DailyAgenda dailyAgenda);
 
