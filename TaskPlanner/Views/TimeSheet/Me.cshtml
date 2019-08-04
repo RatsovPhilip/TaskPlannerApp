@@ -41,8 +41,8 @@
                 <form class="form-horizontal">
                     <input type="hidden" id="hdEventID" value="0" />
                     <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" id="txtSubject" class="form-control" />
+                        <label>Project</label>
+                        <input type="text" id="txtProject" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label>Start</label>
@@ -108,7 +108,7 @@
                     $.each(data, function (i, v) {
                         events.push({
                             id: v.id,
-                            title: v.subject,
+                            title: v.project,
                             description: v.description,
                             start: v.startDate,
                             end: v.endDate,
@@ -167,7 +167,7 @@
                 eventDrop: function (event) {
                     var data = {
                         Id: event.id,
-                        Subject: event.title,
+                        Project: event.title,
                         Start: event.start.format('DD/MM/YYYY HH:mm A'),
                         End: event.end.format('DD/MM/YYYY HH:mm A'),
                         Description: event.description,
@@ -207,7 +207,7 @@
         function openAddEditForm() {
             if (selectedEvent != null) {
                 $('#hdEventID').val(selectedEvent.id);
-                $('#txtSubject').val(selectedEvent.title);
+                $('#txtProject').val(selectedEvent.title);
                 $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
                 $('#txtEnd').val(selectedEvent.end.format('DD/MM/YYYY HH:mm A'));
                 $('#txtDescription').val(selectedEvent.description);
@@ -219,8 +219,8 @@
 
         $('#btnSave').click(function () {
             //Validation/
-            if ($('#txtSubject').val().trim() == "") {
-                alert('Subject required');
+            if ($('#txtProject').val().trim() == "") {
+                alert('Project required');
                 return;
             }
             if ($('#txtStart').val().trim() == "") {
@@ -242,7 +242,7 @@
 
             var data = {
                 Id: $('#hdEventID').val(),
-                Subject: $('#txtSubject').val().trim(),
+                Project: $('#txtProject').val().trim(),
                 StartDate: $('#txtStart').val().trim(),
                 EndDate: $('#txtEnd').val().trim(),
                 Description: $('#txtDescription').val(),

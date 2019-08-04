@@ -42,7 +42,7 @@ namespace TaskPlanner.Controllers
                 var newEvent = this.timeSheetService.GetEventFromId(dailyAgenda);
                 if (newEvent != null)
                 {
-                    newEvent.Subject = dailyAgenda.Subject;
+                    newEvent.Project = dailyAgenda.Project;
                     newEvent.StartDate = dailyAgenda.StartDate;
                     newEvent.EndDate = dailyAgenda.EndDate;
                     newEvent.Description = dailyAgenda.Description;
