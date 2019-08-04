@@ -24,6 +24,8 @@ namespace TaskPlanner.Service
         public IEnumerable<Category> GetAllCompanyProjects(string companyName)
         {
             var projects = this.dbContext.Categories.Where(c => c.CompanyCategories.All(cc => cc.Company.Name.Contains(companyName))).ToList();
+
+            return projects;
         }
     }
 }

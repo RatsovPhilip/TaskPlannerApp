@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using TaskPlanner.Data.Models;
+using TaskPlanner.Models;
 using TaskPlanner.Service;
 
 namespace TaskPlanner.Controllers
@@ -9,12 +11,14 @@ namespace TaskPlanner.Controllers
     {
         private readonly ITimeSheetService timeSheetService;
         private readonly IUserService userService;
+        private readonly IProjectService projectService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public TimeSheetController(ITimeSheetService timeSheetService, IUserService userService, UserManager<ApplicationUser> userManager)
+        public TimeSheetController(ITimeSheetService timeSheetService, IUserService userService,IProjectService projectService, UserManager<ApplicationUser> userManager)
         {
             this.timeSheetService = timeSheetService;
             this.userService = userService;
+            this.projectService = projectService;
             this.userManager = userManager;
         }
         public IActionResult Me()
@@ -27,6 +31,23 @@ namespace TaskPlanner.Controllers
             //Collecting all events of current User so they can be displayed on the calendar
 
             var userId = this.userManager.GetUserId(this.User);
+            //var user = this.userService.GetCurrentUser(userId);
+
+            //var dailyAgendaCollection = this.timeSheetService.GetAllEventsOfUserFromDB(userId);
+            //var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
+
+            //var data = dailyAgendaCollection.Select(da => new CompanyProjectViewModel
+            //{
+            //    Id = da.Id,
+            //    Project = projectCollection.Select(pc => new Category
+            //    {
+            //        Name = pc.Name
+            //    }).ToList(),
+            //    Description = da.Description,
+            //    StartDate = da.StartDate,
+            //    EndDate = da.EndDate,
+            //    ThemeColor = da.ThemeColor
+            //});
 
             return new JsonResult(this.timeSheetService.GetAllEventsOfUserFromDB(userId));
         }
