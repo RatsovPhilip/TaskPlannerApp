@@ -82,5 +82,21 @@ namespace TaskPlanner.Controllers
             return this.View(viewModel);
         }
 
+        [Authorize(Roles = GlobalConstants.RoleAdmin)]
+        public IActionResult Delete(CompanyProjectViewModel viewModel)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var user = this.userService.GetCurrentUser(userId);
+
+            var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
+
+            foreach (var projectName in projectCollection)
+            {
+                viewModel.ProjectsName.Add(projectName.Name);
+            }
+
+            return this.View(viewModel);
+        }
+
     }
 }
