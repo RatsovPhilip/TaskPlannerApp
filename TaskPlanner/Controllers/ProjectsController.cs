@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using TaskPlanner.Data.Models;
 using TaskPlanner.Models;
 using TaskPlanner.Service;
+using TaskPlanner.Service.Common;
 
 namespace TaskPlanner.Controllers
 {
@@ -25,12 +27,14 @@ namespace TaskPlanner.Controllers
             this.companyService = companyService;
         }
 
+        [Authorize(Roles = GlobalConstants.RoleAdmin)]
         public IActionResult Add()
         {
 
             return this.View();
         }
 
+        [Authorize(Roles = GlobalConstants.RoleAdmin)]
         [HttpPost]
         public IActionResult Add(ProjectCategoryAddViewModel viewModel)
         {
@@ -60,6 +64,22 @@ namespace TaskPlanner.Controllers
             }
 
             return this.View();
+        }
+
+        [Authorize(Roles = GlobalConstants.RoleAdmin)]
+        public IActionResult Manage(CompanyProjectViewModel viewModel)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var user = this.userService.GetCurrentUser(userId);
+
+            var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
+
+            foreach (var projectName in projectCollection)
+            {
+                viewModel.ProjectsName.Add(projectName.Name);
+            }
+
+            return this.View(viewModel);
         }
 
     }

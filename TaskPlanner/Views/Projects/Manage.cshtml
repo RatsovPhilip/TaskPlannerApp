@@ -1,0 +1,23 @@
+﻿@model CompanyProjectViewModel
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Manage Projects</h1>
+<hr />
+@foreach (var name in Model.ProjectsName)
+{
+    <div class="row">
+        <div class="col">
+            @name
+        </div>
+        <div class="col col-lg-2">
+            <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+        <div class="col col-lg-2">
+            <button type="button" class="btn btn-primary" href="/Projects/Edit">Edit</button>
+        </div>
+    </div>
+    <hr />
+}
