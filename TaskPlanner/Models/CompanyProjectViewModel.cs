@@ -10,19 +10,9 @@ namespace TaskPlanner.Models
     {
         public CompanyProjectViewModel()
         {
-            this.Project = new HashSet<Category>();
+            this.ProjectsName = new List<string>();
         }
 
-        public string Id { get; set; }
-
-        public ICollection<Category> Project { get; set; }
-
-        public string Description { get; set; }
-
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
-
-        public string ThemeColor { get; set; }
+        public List<string> ProjectsName { get; set; }
     }
 }

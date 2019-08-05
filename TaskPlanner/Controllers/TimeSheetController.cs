@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 using TaskPlanner.Data.Models;
 using TaskPlanner.Models;
@@ -21,9 +22,19 @@ namespace TaskPlanner.Controllers
             this.projectService = projectService;
             this.userManager = userManager;
         }
-        public IActionResult Me()
+        public IActionResult Me(CompanyProjectViewModel viewModel)
         {
-            return this.View();
+            var userId = this.userManager.GetUserId(this.User);
+            var user = this.userService.GetCurrentUser(userId);
+
+            var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
+
+            foreach(var projectName in projectCollection)
+            {
+                viewModel.ProjectsName.Add(projectName.Name);
+            }
+
+            return this.View(viewModel);
         }
 
         public ActionResult GetEvents()
@@ -31,23 +42,6 @@ namespace TaskPlanner.Controllers
             //Collecting all events of current User so they can be displayed on the calendar
 
             var userId = this.userManager.GetUserId(this.User);
-            //var user = this.userService.GetCurrentUser(userId);
-
-            //var dailyAgendaCollection = this.timeSheetService.GetAllEventsOfUserFromDB(userId);
-            //var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
-
-            //var data = dailyAgendaCollection.Select(da => new CompanyProjectViewModel
-            //{
-            //    Id = da.Id,
-            //    Project = projectCollection.Select(pc => new Category
-            //    {
-            //        Name = pc.Name
-            //    }).ToList(),
-            //    Description = da.Description,
-            //    StartDate = da.StartDate,
-            //    EndDate = da.EndDate,
-            //    ThemeColor = da.ThemeColor
-            //});
 
             return new JsonResult(this.timeSheetService.GetAllEventsOfUserFromDB(userId));
         }
