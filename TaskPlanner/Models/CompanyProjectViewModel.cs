@@ -13,6 +13,8 @@ namespace TaskPlanner.Models
             this.ProjectsName = new List<string>();
         }
 
+        public string Id { get; set; }
+
         public List<string> ProjectsName { get; set; }
     }
 }

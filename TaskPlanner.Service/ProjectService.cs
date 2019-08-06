@@ -29,5 +29,15 @@ namespace TaskPlanner.Service
 
             return projects;
         }
+
+        public void DeleteProjectById(string id)
+        {
+            var project = this.dbContext.Categories.Where(c => c.Id == id).FirstOrDefault();
+            if (project != null)
+            {
+                this.dbContext.Categories.Remove(project);
+                this.dbContext.SaveChanges();
+            }
+        }
     }
 }

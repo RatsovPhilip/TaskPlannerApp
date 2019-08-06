@@ -10,5 +10,7 @@ namespace TaskPlanner.Service
         void AddProject(Category category);
 
         IEnumerable<Category> GetAllCompanyProjects(string companyName);
+
+        void DeleteProjectById(string id);
     }
 }

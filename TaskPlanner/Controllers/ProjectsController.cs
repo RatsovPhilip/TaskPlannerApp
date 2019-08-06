@@ -83,19 +83,12 @@ namespace TaskPlanner.Controllers
         }
 
         [Authorize(Roles = GlobalConstants.RoleAdmin)]
-        public IActionResult Delete(CompanyProjectViewModel viewModel)
+        [HttpPost]
+        public IActionResult Manage(string id)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var user = this.userService.GetCurrentUser(userId);
+            this.projectService.DeleteProjectById(id);
 
-            var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
-
-            foreach (var projectName in projectCollection)
-            {
-                viewModel.ProjectsName.Add(projectName.Name);
-            }
-
-            return this.View(viewModel);
+            return this.Redirect("/Projects/Manage");
         }
 
     }
