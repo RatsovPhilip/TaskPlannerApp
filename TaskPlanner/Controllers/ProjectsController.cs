@@ -83,10 +83,9 @@ namespace TaskPlanner.Controllers
         }
 
         [Authorize(Roles = GlobalConstants.RoleAdmin)]
-        [HttpPost]
-        public IActionResult Manage(string id)
+        public IActionResult Delete(string id)
         {
-            this.projectService.DeleteProjectById(id);
+            this.projectService.DeleteProjectByName(id);
 
             return this.Redirect("/Projects/Manage");
         }

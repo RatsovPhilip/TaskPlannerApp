@@ -30,9 +30,9 @@ namespace TaskPlanner.Service
             return projects;
         }
 
-        public void DeleteProjectById(string id)
+        public void DeleteProjectByName(string name)
         {
-            var project = this.dbContext.Categories.Where(c => c.Id == id).FirstOrDefault();
+            var project = this.dbContext.Categories.Where(c => c.Name == name).FirstOrDefault();
             if (project != null)
             {
                 this.dbContext.Categories.Remove(project);

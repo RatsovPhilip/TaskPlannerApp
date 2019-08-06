@@ -12,9 +12,13 @@
         <div class="col">
             @name
         </div>
+        <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@name">
+            <input type="submit" name="Delete" value="Delete" />
+        </form>
+        @*<a asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@name"></a>
         <div class="col col-lg-2">
-            <button type="button" class="btn btn-primary" a href="/Projects/Edit">Edit</button>
-        </div>
+            <button type="button" class="btn btn-primary" href="/Projects/Edit">Edit</button>
+        </div>*@
         <div class="col col-lg-2">
             <button type="button" class="btn btn-danger" href="/Projects/Delete">Delete</button>
         </div>
