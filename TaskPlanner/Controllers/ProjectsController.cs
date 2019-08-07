@@ -47,7 +47,8 @@ namespace TaskPlanner.Controllers
 
 
                 var categoryToAdd = new Category
-                { Name = viewModel.Name
+                {
+                    Name = viewModel.Name
                 };
 
                 categoryToAdd.CompanyCategories = new List<CompanyCategory>
@@ -92,9 +93,44 @@ namespace TaskPlanner.Controllers
             return this.Redirect("/Projects/Manage");
         }
 
-        public IActionResult Edit(string name)
+        public IActionResult Edit(string id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var projectFromDb = this.projectService.GetCategoryByName(id);
+
+            if (projectFromDb == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new ProjectCompanyEditViewModel
+            {
+                Name = projectFromDb.Name
+            };
+
+            return this.View(viewModel);
+        }
+
+        [Authorize(Roles = GlobalConstants.RoleAdmin)]
+        [HttpPost]
+        public IActionResult Edit(ProjectCompanyEditViewModel viewModel)
+        {
+            var projectFromDb = this.projectService.GetCategoryByName(viewModel.Name);
+
+            if (viewModel.Name == null)
+            {
+                projectFromDb.Name = viewModel.Name;
+
+                this.projectService.UpdateDatabase();
+
+                return this.Redirect("/Projects/Manage");
+            }
+
+            return View(viewModel);
         }
 
     }

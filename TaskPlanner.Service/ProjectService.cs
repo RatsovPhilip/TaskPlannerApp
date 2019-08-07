@@ -39,5 +39,15 @@ namespace TaskPlanner.Service
                 this.dbContext.SaveChanges();
             }
         }
+
+        public Category GetCategoryByName(string name)
+        {
+            return this.dbContext.Categories.Where(c => c.Name == name).FirstOrDefault();
+        }
+
+        public void UpdateDatabase()
+        {
+            this.dbContext.SaveChanges();
+        }
     }
 }
