@@ -46,7 +46,9 @@ namespace TaskPlanner.Controllers
                 var companyToAdd = this.companyService.GetCompanyByName(companyName);
 
 
-                var categoryToAdd = new Category { Name = viewModel.Name };
+                var categoryToAdd = new Category
+                { Name = viewModel.Name
+                };
 
                 categoryToAdd.CompanyCategories = new List<CompanyCategory>
                  {
@@ -88,6 +90,11 @@ namespace TaskPlanner.Controllers
             this.projectService.DeleteProjectByName(id);
 
             return this.Redirect("/Projects/Manage");
+        }
+
+        public IActionResult Edit(string name)
+        {
+
         }
 
     }
