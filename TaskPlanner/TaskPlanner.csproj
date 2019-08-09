@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TaskPlanner.Data\TaskPlanner.Data.csproj" />
     <ProjectReference Include="..\TaskPlanner.Service\TaskPlanner.Service.csproj" />
+    <ProjectReference Include="..\TaskPlannerMapper\TaskPlanner.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
