@@ -40,9 +40,9 @@ namespace TaskPlanner.Service
             }
         }
 
-        public Category GetCategoryByName(string name)
+        public Category GetCategoryById(string id)
         {
-            return this.dbContext.Categories.Where(c => c.Name == name).FirstOrDefault();
+            return this.dbContext.Categories.Where(c => c.Id == id).FirstOrDefault();
         }
 
         public void UpdateDatabase()

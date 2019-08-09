@@ -13,7 +13,7 @@ namespace TaskPlanner.Service
 
         void DeleteProjectByName(string name);
 
-        Category GetCategoryByName(string id);
+        Category GetCategoryById(string id);
 
         void UpdateDatabase();
     }

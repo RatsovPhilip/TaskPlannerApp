@@ -77,9 +77,12 @@ namespace TaskPlanner.Controllers
 
             var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
 
-            foreach (var projectName in projectCollection)
+            foreach (var project in projectCollection)
             {
-                viewModel.ProjectsName.Add(projectName.Name);
+                viewModel.ProjectsName.Add(new ProjectViewModel {
+                    Id = project.Id,
+                    Name = project.Name
+                });
             }
 
             return this.View(viewModel);
@@ -100,15 +103,16 @@ namespace TaskPlanner.Controllers
                 return NotFound();
             }
 
-            var projectFromDb = this.projectService.GetCategoryByName(id);
+            var projectFromDb = this.projectService.GetCategoryById(id);
 
             if (projectFromDb == null)
             {
                 return NotFound();
             }
 
-            var viewModel = new ProjectCompanyEditViewModel
+            var viewModel = new ProjectViewModel
             {
+                Id = projectFromDb.Id,
                 Name = projectFromDb.Name
             };
 
@@ -117,11 +121,11 @@ namespace TaskPlanner.Controllers
 
         [Authorize(Roles = GlobalConstants.RoleAdmin)]
         [HttpPost]
-        public IActionResult Edit(ProjectCompanyEditViewModel viewModel)
+        public IActionResult Edit(ProjectViewModel viewModel)
         {
-            var projectFromDb = this.projectService.GetCategoryByName(viewModel.Name);
+            var projectFromDb = this.projectService.GetCategoryById(viewModel.Id);
 
-            if (viewModel.Name == null)
+            if (viewModel.Name != null)
             {
                 projectFromDb.Name = viewModel.Name;
 

@@ -45,7 +45,7 @@
                     <select id="txtProject" class="form-control">
                         @for (int i = 0; i < Model.ProjectsName.Count; i++)
                         {
-                            <option value="@Model.ProjectsName[i]">@Model.ProjectsName[i]</option>
+                            <option value="@Model.ProjectsName[i].Name">@Model.ProjectsName[i].Name</option>
                         }
                     </select>
                     <div class="form-group">

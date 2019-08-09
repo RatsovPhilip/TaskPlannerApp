@@ -10,11 +10,9 @@ namespace TaskPlanner.Models
     {
         public CompanyProjectViewModel()
         {
-            this.ProjectsName = new List<string>();
+            this.ProjectsName = new List<ProjectViewModel>();
         }
 
-        public string Id { get; set; }
-
-        public List<string> ProjectsName { get; set; }
+        public List<ProjectViewModel> ProjectsName { get; set; }
     }
 }

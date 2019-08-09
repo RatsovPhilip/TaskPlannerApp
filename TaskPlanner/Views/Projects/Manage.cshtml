@@ -6,20 +6,20 @@
 
 <h1>Manage Projects</h1>
 <hr />
-@foreach (var name in Model.ProjectsName)
+@foreach (var project in Model.ProjectsName)
 {
     <div class="row">
         <div class="col">
-            @name
+            @project.Name
         </div>
         <div class="col col-lg-2">
-            <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@name">
+            <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@project.Id">
                 <button type="submit" class="btn btn-danger mb-2">Delete</button>
 
             </form>
         </div>
         <div class="col col-lg-2">
-            <form asp-area="" asp-controller="Projects" asp-action="Edit" asp-route-id="@name">
+            <form asp-area="" asp-controller="Projects" asp-action="Edit" method="get" asp-route-id="@project.Id">
                 <button type="submit" class="btn btn-primary mb-2">Edit</button>
             </form>
         </div>

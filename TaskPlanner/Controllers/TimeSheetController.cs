@@ -29,9 +29,12 @@ namespace TaskPlanner.Controllers
 
             var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
 
-            foreach(var projectName in projectCollection)
+            foreach(var project in projectCollection)
             {
-                viewModel.ProjectsName.Add(projectName.Name);
+                viewModel.ProjectsName.Add(new ProjectViewModel {
+                    Id = project.Id,
+                    Name = project.Name
+                });
             }
 
             return this.View(viewModel);
