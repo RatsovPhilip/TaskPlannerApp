@@ -10,6 +10,8 @@ namespace TaskPlanner.Service
     {
         void CreateCompany(Company company, ApplicationUser user);
 
+        void JoinCompany(ApplicationUser user,string companyName);
+
         bool CheckIfCompanyNameIsAvailable(string name);
 
         Company GetCompanyByName(string companyName);

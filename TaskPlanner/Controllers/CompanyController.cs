@@ -34,7 +34,7 @@ namespace TaskPlanner.Controllers
             {
                 var user = await GetCurrentUserAsync();
 
-                var company = new Company
+                 var company = new Company
                 {
                     Name = companyModel.Name,
                     FieldOfService = companyModel.FieldOfService,
@@ -68,12 +68,7 @@ namespace TaskPlanner.Controllers
             {
                 var user = await GetCurrentUserAsync();
 
-                var company = new Company
-                {
-                    Name = companyModel.Name
-                };
-
-                this.companyService.CreateCompany(company, user);
+                this.companyService.JoinCompany(user,companyModel.Name);
 
                 return Redirect("/");
             }

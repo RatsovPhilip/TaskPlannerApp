@@ -32,7 +32,7 @@ namespace TaskPlanner.Service
             return true;
         }
 
-        public void CreateCompany(Company company,ApplicationUser user)
+        public void CreateCompany(Company company, ApplicationUser user)
         {
             user.CompanyName = company.Name;
             company.TeamMembers.Add(user);
@@ -40,9 +40,19 @@ namespace TaskPlanner.Service
             this.dbContext.SaveChanges();
         }
 
+        public void JoinCompany(ApplicationUser user,string companyName)
+        {
+            var company = this.GetCompanyByName(companyName);
+            user.CompanyName = companyName;
+            company.TeamMembers.Add(user);
+            this.dbContext.SaveChanges();
+
+        }
+
         public Company GetCompanyByName(string companyName)
         {
             return this.dbContext.Companies.FirstOrDefault(c => c.Name == companyName);
         }
+
     }
 }
