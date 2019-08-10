@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,18 +25,14 @@ namespace TaskPlanner.Controllers
         }
         public IActionResult Me(CompanyProjectViewModel viewModel)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var user = this.userService.GetCurrentUser(userId);
+            var userId = GetCurrentUserId();
+            var user = this.userService.GetCurrentUserFromDb(userId);
 
             var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
 
-            foreach(var project in projectCollection)
-            {
-                viewModel.ProjectsName.Add(new ProjectViewModel {
-                    Id = project.Id,
-                    Name = project.Name
-                });
-            }
+            var projects = Mapper.Map<List<ProjectViewModel>>(projectCollection);
+
+            viewModel.ProjectsName.AddRange(projects);
 
             return this.View(viewModel);
         }
@@ -44,7 +41,7 @@ namespace TaskPlanner.Controllers
         {
             //Collecting all events of current User so they can be displayed on the calendar
 
-            var userId = this.userManager.GetUserId(this.User);
+            var userId = GetCurrentUserId();
 
             return new JsonResult(this.timeSheetService.GetAllEventsOfUserFromDB(userId));
         }
@@ -72,8 +69,8 @@ namespace TaskPlanner.Controllers
                 //Adding new event
 
                 //First adding the created event to the current User collection "DailyAgendas"
-                var userId = this.userManager.GetUserId(this.User);
-                var user = this.userService.GetCurrentUser(userId);
+                var userId = GetCurrentUserId();
+                var user = this.userService.GetCurrentUserFromDb(userId);
                 user.DailyAgendas.Add(dailyAgenda);
 
                 //Adding the event
@@ -98,6 +95,11 @@ namespace TaskPlanner.Controllers
             status = true;
 
             return new JsonResult(new { status });
+        }
+
+        private string GetCurrentUserId()
+        {
+            return this.userManager.GetUserId(this.User);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace TaskPlanner.Service
             this.dbContext = dbContext;
         }
 
-        public ApplicationUser GetCurrentUser(string currentUserId)
+        public ApplicationUser GetCurrentUserFromDb(string currentUserId)
         {
             var user = this.dbContext.Users.FirstOrDefault(x => x.Id == currentUserId);
 

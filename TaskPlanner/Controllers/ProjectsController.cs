@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -40,8 +41,8 @@ namespace TaskPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userId = this.userManager.GetUserId(this.User);
-                var currentUser = this.userService.GetCurrentUser(userId);
+                var userId = this.GetCurrentUserId();
+                var currentUser = this.GetCurrentUserById(userId);
                 var companyName = currentUser.CompanyName;
                 var companyToAdd = this.companyService.GetCompanyByName(companyName);
 
@@ -72,8 +73,8 @@ namespace TaskPlanner.Controllers
         [Authorize(Roles = GlobalConstants.RoleAdmin)]
         public IActionResult Manage(CompanyProjectViewModel viewModel)
         {
-            var userId = this.userManager.GetUserId(this.User);
-            var user = this.userService.GetCurrentUser(userId);
+            var userId = this.GetCurrentUserId();
+            var user = GetCurrentUserById(userId);
 
             var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
 
@@ -110,13 +111,9 @@ namespace TaskPlanner.Controllers
                 return NotFound();
             }
 
-            var viewModel = new ProjectViewModel
-            {
-                Id = projectFromDb.Id,
-                Name = projectFromDb.Name
-            };
+            var project = Mapper.Map<ProjectViewModel>(projectFromDb);
 
-            return this.View(viewModel);
+            return this.View(project);
         }
 
         [Authorize(Roles = GlobalConstants.RoleAdmin)]
@@ -135,6 +132,16 @@ namespace TaskPlanner.Controllers
             }
 
             return View(viewModel);
+        }
+
+        private string GetCurrentUserId()
+        {
+            return this.userManager.GetUserId(this.User);
+        }
+
+        private ApplicationUser GetCurrentUserById(string id)
+        {
+            return this.userService.GetCurrentUserFromDb(id);
         }
 
     }

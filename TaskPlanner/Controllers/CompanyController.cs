@@ -11,15 +11,13 @@ namespace TaskPlanner.Controllers
     public class CompanyController : Controller
     {
         private readonly ICompanyService companyService;
-        private readonly IUserService userService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
-        public CompanyController(ICompanyService companyService, IUserService userService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
+        public CompanyController(ICompanyService companyService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
         {
             this.companyService = companyService;
-            this.userService = userService;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.signInManager = signInManager;
@@ -34,7 +32,7 @@ namespace TaskPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await this.userManager.GetUserAsync(this.User);
+                var user = await GetCurrentUserAsync();
 
                 var company = new Company
                 {
@@ -68,7 +66,7 @@ namespace TaskPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await this.userManager.GetUserAsync(this.User);
+                var user = await GetCurrentUserAsync();
 
                 var company = new Company
                 {
@@ -80,6 +78,11 @@ namespace TaskPlanner.Controllers
                 return Redirect("/");
             }
             return this.View();
+        }
+
+        private async Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return await this.userManager.GetUserAsync(this.User);
         }
 
     }

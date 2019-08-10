@@ -5,6 +5,6 @@ namespace TaskPlanner.Service
 {
     public interface IUserService
     {
-        ApplicationUser GetCurrentUser(string Id);
+        ApplicationUser GetCurrentUserFromDb(string Id);
     }
 }
