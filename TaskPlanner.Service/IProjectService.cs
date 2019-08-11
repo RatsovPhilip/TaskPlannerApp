@@ -9,6 +9,8 @@ namespace TaskPlanner.Service
     {
         void AddProject(Category category);
 
+        void AddDefaultProjects(Company company);
+
         IEnumerable<Category> GetAllCompanyProjects(string companyName);
 
         void DeleteProjectByName(string name);

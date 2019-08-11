@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
+using TaskPlanner.Service.Common;
 
 namespace TaskPlanner.Service
 {
@@ -47,6 +48,56 @@ namespace TaskPlanner.Service
 
         public void UpdateDatabase()
         {
+            this.dbContext.SaveChanges();
+        }
+
+        public void AddDefaultProjects(Company company)
+        {
+            var categorySick = new Category { Name = GlobalConstants.AbsenceCategorySickLeave };
+            var categoryHoliday = new Category { Name = GlobalConstants.AbsenceCategoryNationalHoliday };
+            var categoryTimeForTime = new Category { Name = GlobalConstants.AbsenceCategoryTimeForTime };
+            var categoryVacation = new Category { Name = GlobalConstants.AbsenceCategoryVacation };
+
+            categorySick.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categorySick
+                }
+            };
+
+            categoryHoliday.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categoryHoliday
+                }
+            };
+
+            categoryTimeForTime.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categoryTimeForTime
+                }
+            };
+
+            categoryVacation.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categoryVacation
+                }
+            };
+
+            this.dbContext.Categories.Add(categorySick);
+            this.dbContext.Categories.Add(categoryHoliday);
+            this.dbContext.Categories.Add(categoryTimeForTime);
+            this.dbContext.Categories.Add(categoryVacation);
             this.dbContext.SaveChanges();
         }
     }

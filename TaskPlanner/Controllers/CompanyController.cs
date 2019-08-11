@@ -11,13 +11,15 @@ namespace TaskPlanner.Controllers
     public class CompanyController : Controller
     {
         private readonly ICompanyService companyService;
+        private readonly IProjectService projectService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly SignInManager<ApplicationUser> signInManager;
 
-        public CompanyController(ICompanyService companyService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
+        public CompanyController(ICompanyService companyService,IProjectService projectService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
         {
             this.companyService = companyService;
+            this.projectService = projectService;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.signInManager = signInManager;
@@ -47,6 +49,8 @@ namespace TaskPlanner.Controllers
                 {
                     await this.roleManager.CreateAsync(new IdentityRole() { Name = GlobalConstants.RoleAdmin });
                 }
+
+                this.projectService.AddDefaultProjects(company);
 
                 await this.userManager.AddToRoleAsync(user, GlobalConstants.RoleAdmin);
                 await this.signInManager.SignOutAsync();
