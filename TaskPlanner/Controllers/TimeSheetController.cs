@@ -58,6 +58,7 @@ namespace TaskPlanner.Controllers
                 if (newEvent != null)
                 {
                     newEvent.Project = dailyAgenda.Project;
+                    newEvent.SubCategory = dailyAgenda.SubCategory;
                     newEvent.StartDate = dailyAgenda.StartDate;
                     newEvent.EndDate = dailyAgenda.EndDate;
                     newEvent.Description = dailyAgenda.Description;

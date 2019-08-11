@@ -1,4 +1,5 @@
 ﻿@model CompanyProjectViewModel
+@using TaskPlanner.Data.Models.Enums
 @{
     ViewData["Title"] = "Me";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -47,6 +48,10 @@
                         {
                             <option value="@Model.ProjectsName[i].Name">@Model.ProjectsName[i].Name</option>
                         }
+                    </select>
+                    <label>Sub Category</label>
+                    <select id="txtSub" asp-items="@Html.GetEnumSelectList<SubCategory>()" class="form-control">
+                            <option selected="selected" value="">Please select</option>
                     </select>
                     <div class="form-group">
                         <label>Start</label>
@@ -114,6 +119,7 @@
                             events.push({
                                 id: v.id,
                                 title: v.project,
+                                sub: v.subCategory,
                                 description: v.description,
                                 start: v.startDate,
                                 end: v.endDate,
@@ -160,6 +166,7 @@
                         selectedEvent = {
                             id: null,
                             title: '',
+                            sub: 0,
                             description: '',
                             start: start,
                             end: end,
@@ -173,6 +180,7 @@
                         var data = {
                             Id: event.id,
                             Project: event.title,
+                            SubCategory: event.subCategory,
                             Start: event.start.format('DD/MM/YYYY HH:mm A'),
                             End: event.end.format('DD/MM/YYYY HH:mm A'),
                             Description: event.description,
@@ -213,6 +221,7 @@
                 if (selectedEvent != null) {
                     $('#hdEventID').val(selectedEvent.id);
                     $('#txtProject').val(selectedEvent.title);
+                    $('#txtSub').val(selectedEvent.subCategory);
                     $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
                     $('#txtEnd').val(selectedEvent.end.format('DD/MM/YYYY HH:mm A'));
                     $('#txtDescription').val(selectedEvent.description);
@@ -248,6 +257,7 @@
                 var data = {
                     Id: $('#hdEventID').val(),
                     Project: $('#txtProject').val().trim(),
+                    SubCategory: $('#txtSub').val().trim(),
                     StartDate: $('#txtStart').val().trim(),
                     EndDate: $('#txtEnd').val().trim(),
                     Description: $('#txtDescription').val(),
