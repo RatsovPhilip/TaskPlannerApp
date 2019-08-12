@@ -13,8 +13,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <button id="btnDelete" class="btn btn-danger">
@@ -36,8 +36,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Save Event</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
@@ -51,7 +51,7 @@
                     </select>
                     <label>Sub Category</label>
                     <select id="txtSub" asp-items="@Html.GetEnumSelectList<SubCategory>()" class="form-control">
-                            <option selected="selected" value="">Please select</option>
+                        <option selected="selected" value="">Please select</option>
                     </select>
                     <div class="form-group">
                         <label>Start</label>
