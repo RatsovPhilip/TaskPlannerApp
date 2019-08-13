@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskPlanner.CustomValidationAttributes;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Infrastructure;
+using TaskPlanner.Web.CustomValidationAttributes;
 
-namespace TaskPlanner.Models
+namespace TaskPlanner.Web.Models
 {
-    public class CompanyCreateViewModel : IMapFrom<Company>
+    public class CompanyCreateCheckNameViewModel
     {
         [Required(ErrorMessage = "Company name is required")]
         [MaxLength(50)]

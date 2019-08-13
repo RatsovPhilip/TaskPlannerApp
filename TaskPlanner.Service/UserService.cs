@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Linq;
+using System.Threading.Tasks;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
 using TaskPlanner.Service.Common;
@@ -21,5 +22,7 @@ namespace TaskPlanner.Service
 
             return (ApplicationUser)user;
         }
+
+
     }
 }

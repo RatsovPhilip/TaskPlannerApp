@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28902.138
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskPlanner", "TaskPlanner\TaskPlanner.csproj", "{AC92C705-09F6-46F6-B9D0-840B481A332F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskPlanner.Web", "TaskPlanner\TaskPlanner.Web.csproj", "{AC92C705-09F6-46F6-B9D0-840B481A332F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{18809BEA-74CF-4CC6-A65F-D19A3FAC0044}"
 EndProject
@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskPlanner.Service", "Task
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1AD3F2A6-2221-47FA-B1E1-674FD30FB2CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskPlanner.Infrastructure", "TaskPlannerMapper\TaskPlanner.Infrastructure.csproj", "{9BD71FFA-F7EA-4F50-9353-15106637B71D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskPlanner.Infrastructure", "TaskPlannerMapper\TaskPlanner.Infrastructure.csproj", "{9BD71FFA-F7EA-4F50-9353-15106637B71D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskPlanner.ViewModels", "TaskPlanner.Models\TaskPlanner.ViewModels.csproj", "{58505B6E-0FCE-4BD3-B279-8ECF6798123A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{9BD71FFA-F7EA-4F50-9353-15106637B71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BD71FFA-F7EA-4F50-9353-15106637B71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BD71FFA-F7EA-4F50-9353-15106637B71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58505B6E-0FCE-4BD3-B279-8ECF6798123A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58505B6E-0FCE-4BD3-B279-8ECF6798123A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58505B6E-0FCE-4BD3-B279-8ECF6798123A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58505B6E-0FCE-4BD3-B279-8ECF6798123A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{38E90986-8AFD-472F-AAB8-6663AFBB6B04} = {7B5E52BC-9074-48DF-9DB5-0F12B9FF9C5E}
 		{BA6B9953-9532-49BA-9E42-6C0464202B71} = {E3913C2B-EF7B-4D65-B6E4-D294B9CE5090}
 		{9BD71FFA-F7EA-4F50-9353-15106637B71D} = {1AD3F2A6-2221-47FA-B1E1-674FD30FB2CD}
+		{58505B6E-0FCE-4BD3-B279-8ECF6798123A} = {18809BEA-74CF-4CC6-A65F-D19A3FAC0044}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51C6FC7E-4008-43FD-A3EB-18864E1EF605}

@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TaskPlanner.Data.Models\TaskPlanner.Data.Models.csproj" />
     <ProjectReference Include="..\TaskPlanner.Data\TaskPlanner.Data.csproj" />
+    <ProjectReference Include="..\TaskPlanner.Models\TaskPlanner.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>

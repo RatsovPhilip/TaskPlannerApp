@@ -1,6 +1,4 @@
-using System;
-
-namespace TaskPlanner.Models
+namespace TaskPlanner.ViewModels
 {
     public class ErrorViewModel
     {

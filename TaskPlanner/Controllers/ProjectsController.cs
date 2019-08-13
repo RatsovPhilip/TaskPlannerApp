@@ -2,14 +2,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TaskPlanner.Data.Models;
-using TaskPlanner.Models;
 using TaskPlanner.Service;
 using TaskPlanner.Service.Common;
+using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Controllers
 {

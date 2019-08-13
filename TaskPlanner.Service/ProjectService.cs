@@ -98,7 +98,6 @@ namespace TaskPlanner.Service
             this.dbContext.Categories.Add(categoryHoliday);
             this.dbContext.Categories.Add(categoryTimeForTime);
             this.dbContext.Categories.Add(categoryVacation);
-            this.dbContext.SaveChanges();
         }
     }
 }

@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TaskPlanner.Data.Models;
+using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
 {
     public interface ICompanyService
     {
-        void CreateCompany(Company company, ApplicationUser user);
+        void CreateCompany(CompanyCreateViewModel company, ApplicationUser user);
 
         void JoinCompany(ApplicationUser user,string companyName);
 

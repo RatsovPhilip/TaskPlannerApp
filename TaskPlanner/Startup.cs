@@ -1,6 +1,5 @@
 ﻿namespace TaskPlanner
 {
-    using AutoMapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -14,8 +13,8 @@
     using TaskPlanner.Data;
     using TaskPlanner.Data.Models;
     using TaskPlanner.Infrastructure;
-    using TaskPlanner.Models;
     using TaskPlanner.Service;
+    using TaskPlanner.ViewModels;
 
     public class Startup
     {

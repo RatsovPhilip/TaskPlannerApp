@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TaskPlanner.Data.Models;
+﻿using TaskPlanner.Data.Models;
 using TaskPlanner.Infrastructure;
 
-namespace TaskPlanner.Models
+namespace TaskPlanner.ViewModels
 {
     public class ProjectViewModel : IMapFrom<Category>
     {
