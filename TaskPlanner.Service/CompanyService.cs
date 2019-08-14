@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
+using TaskPlanner.Service.Common;
 using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
@@ -8,12 +10,12 @@ namespace TaskPlanner.Service
     public class CompanyService : ICompanyService
     {
         private readonly TaskPlannerDbContext dbContext;
-        private readonly IProjectService projectService;
+        private readonly IUserService userService;
 
-        public CompanyService(TaskPlannerDbContext dbContext, IProjectService projectService)
+        public CompanyService(TaskPlannerDbContext dbContext, IUserService userService)
         {
             this.dbContext = dbContext;
-            this.projectService = projectService;
+            this.userService = userService;
         }
 
         public bool CheckIfCompanyNameIsAvailable(string name)
@@ -43,7 +45,7 @@ namespace TaskPlanner.Service
 
             user.CompanyName = companyForAdd.Name;
             companyForAdd.TeamMembers.Add(user);
-            this.projectService.AddDefaultProjects(companyForAdd);
+            this.AddCompanyDefaultProjects(companyForAdd);
 
             this.dbContext.Companies.Add(companyForAdd);
             this.dbContext.SaveChanges();
@@ -51,16 +53,67 @@ namespace TaskPlanner.Service
 
         public void JoinCompany(ApplicationUser user, string companyName)
         {
-            var company = this.GetCompanyByName(companyName);
+            var company = this.GetCompanyByUserId(companyName);
             user.CompanyName = companyName;
             company.TeamMembers.Add(user);
             this.dbContext.SaveChanges();
 
         }
 
-        public Company GetCompanyByName(string companyName)
+        public Company GetCompanyByUserId(string userId)
         {
+            var user = this.userService.GetCurrentUserFromDb(userId);
+            var companyName = user.CompanyName;
             return this.dbContext.Companies.FirstOrDefault(c => c.Name == companyName);
+        }
+
+        private void AddCompanyDefaultProjects(Company company)
+        {
+            var categorySick = new Category { Name = GlobalConstants.AbsenceCategorySickLeave };
+            var categoryHoliday = new Category { Name = GlobalConstants.AbsenceCategoryNationalHoliday };
+            var categoryTimeForTime = new Category { Name = GlobalConstants.AbsenceCategoryTimeForTime };
+            var categoryVacation = new Category { Name = GlobalConstants.AbsenceCategoryVacation };
+
+            categorySick.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categorySick
+                }
+            };
+
+            categoryHoliday.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categoryHoliday
+                }
+            };
+
+            categoryTimeForTime.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categoryTimeForTime
+                }
+            };
+
+            categoryVacation.CompanyCategories = new List<CompanyCategory>
+            {
+                new CompanyCategory
+                {
+                     Company = company,
+                     Category = categoryVacation
+                }
+            };
+
+            this.dbContext.Categories.Add(categorySick);
+            this.dbContext.Categories.Add(categoryHoliday);
+            this.dbContext.Categories.Add(categoryTimeForTime);
+            this.dbContext.Categories.Add(categoryVacation);
         }
 
     }

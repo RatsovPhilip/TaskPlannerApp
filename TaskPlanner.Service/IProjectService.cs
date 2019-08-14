@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using TaskPlanner.Data.Models;
+using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
 {
     public interface IProjectService
     {
-        void AddProject(Category category);
+        void AddProject(ProjectCategoryAddViewModel viewModel,string userId);
 
-        void AddDefaultProjects(Company company);
+        List<ProjectViewModel> GetAllCompanyProjects(string userId);
 
-        IEnumerable<Category> GetAllCompanyProjects(string companyName);
+        void DeleteProjectById(string name);
 
-        void DeleteProjectByName(string name);
+        ProjectViewModel GetCategoryById(string id);
 
-        Category GetCategoryById(string id);
-
-        void UpdateDatabase();
+        void UpdateEditedProject(ProjectViewModel viewModel);
     }
 }

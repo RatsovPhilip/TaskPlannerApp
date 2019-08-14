@@ -25,13 +25,10 @@ namespace TaskPlanner.Controllers
         public IActionResult Me(CompanyProjectViewModel viewModel)
         {
             var userId = GetCurrentUserId();
-            var user = this.userService.GetCurrentUserFromDb(userId);
 
-            var projectCollection = this.projectService.GetAllCompanyProjects(user.CompanyName);
+            var projectCollection = this.projectService.GetAllCompanyProjects(userId);
 
-            var projects = Mapper.Map<List<ProjectViewModel>>(projectCollection);
-
-            viewModel.ProjectsName.AddRange(projects);
+            viewModel.ProjectsName.AddRange(projectCollection);
 
             return this.View(viewModel);
         }
