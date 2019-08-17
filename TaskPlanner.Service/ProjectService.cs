@@ -44,7 +44,7 @@ namespace TaskPlanner.Service
             this.dbContext.SaveChanges();
         }
 
-        public List<ProjectViewModel> GetAllCompanyProjects(string userId)
+        public CompanyProjectViewModel GetAllCompanyProjects(string userId, CompanyProjectViewModel viewModel)
         {
             var user = this.userService.GetCurrentUserFromDb(userId);
 
@@ -56,7 +56,9 @@ namespace TaskPlanner.Service
 
             var projects = Mapper.Map<List<ProjectViewModel>>(projectsCollection);
 
-            return projects;
+            viewModel.ProjectsName.AddRange(projects);
+
+            return viewModel;
         }
 
         public void DeleteProjectById(string id)

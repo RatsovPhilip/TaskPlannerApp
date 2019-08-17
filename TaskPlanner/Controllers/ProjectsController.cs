@@ -52,9 +52,7 @@ namespace TaskPlanner.Controllers
         {
             var userId = this.GetCurrentUserId();
 
-            var projectCollection = this.projectService.GetAllCompanyProjects(userId);
-
-            viewModel.ProjectsName.AddRange(projectCollection);
+            viewModel = this.projectService.GetAllCompanyProjects(userId, viewModel);
 
             return this.View(viewModel);
         }

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
+using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
 {
@@ -28,11 +30,13 @@ namespace TaskPlanner.Service
             return result;
         }
 
-        public IEnumerable<DailyAgenda> GetAllEventsOfUserFromDB(string userId)
+        public List<DailyAgendaViewModel> GetAllEventsOfUserFromDB(string userId)
         {
-            var events = dbContext.DailyAgendas.Where(da => da.ApplicationUserId == userId).ToList();
+            var eventsFromDb = dbContext.DailyAgendas.Where(da => da.ApplicationUserId == userId).ToList();
 
-            return events;
+            var mappedEvents = Mapper.Map<List<DailyAgendaViewModel>>(eventsFromDb);
+
+            return mappedEvents;
         }
 
         public void UpdateDatabase()

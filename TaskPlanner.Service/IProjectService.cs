@@ -10,7 +10,7 @@ namespace TaskPlanner.Service
     {
         void AddProject(ProjectCategoryAddViewModel viewModel,string userId);
 
-        List<ProjectViewModel> GetAllCompanyProjects(string userId);
+        CompanyProjectViewModel GetAllCompanyProjects(string userId, CompanyProjectViewModel viewModel);
 
         void DeleteProjectById(string name);
 

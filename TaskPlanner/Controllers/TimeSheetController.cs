@@ -15,7 +15,7 @@ namespace TaskPlanner.Controllers
         private readonly IProjectService projectService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public TimeSheetController(ITimeSheetService timeSheetService, IUserService userService,IProjectService projectService, UserManager<ApplicationUser> userManager)
+        public TimeSheetController(ITimeSheetService timeSheetService, IUserService userService, IProjectService projectService, UserManager<ApplicationUser> userManager)
         {
             this.timeSheetService = timeSheetService;
             this.userService = userService;
@@ -26,9 +26,7 @@ namespace TaskPlanner.Controllers
         {
             var userId = GetCurrentUserId();
 
-            var projectCollection = this.projectService.GetAllCompanyProjects(userId);
-
-            viewModel.ProjectsName.AddRange(projectCollection);
+            viewModel = this.projectService.GetAllCompanyProjects(userId, viewModel);
 
             return this.View(viewModel);
         }
