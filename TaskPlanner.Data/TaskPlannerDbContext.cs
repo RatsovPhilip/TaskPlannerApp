@@ -21,6 +21,7 @@
         public DbSet<TimeSheet> TimeSheets { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyCategory> CompanyCategories { get; set; }
+        public DbSet<UsersCategories> UsersCategories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,6 +42,19 @@
                 .HasOne(cc => cc.Category)
                 .WithMany(c => c.CompanyCategories)
                 .HasForeignKey(cc => cc.CategoryId);
+
+            builder.Entity<UsersCategories>()
+                .HasKey(uc => new { uc.ApplicationUserId, uc.CategoryId });
+
+            builder.Entity<UsersCategories>()
+                .HasOne(uc => uc.ApplicationUser)
+                .WithMany(u => u.UsersCategories)
+                .HasForeignKey(uc => uc.ApplicationUserId);
+
+            builder.Entity<UsersCategories>()
+                .HasOne(uc => uc.Category)
+                .WithMany(c => c.UsersCategories)
+                .HasForeignKey(uc => uc.CategoryId);
 
             base.OnModelCreating(builder);
         }

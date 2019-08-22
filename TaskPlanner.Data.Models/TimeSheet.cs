@@ -15,6 +15,6 @@
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public ICollection<DailyAgenda> Schedule { get; set; }
+        public virtual ICollection<DailyAgenda> Schedule { get; set; }
     }
 }

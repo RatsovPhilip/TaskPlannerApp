@@ -19,9 +19,9 @@
 
         public string Address { get; set; }
 
-        public ICollection<ApplicationUser> TeamMembers { get; set; }
+        public virtual ICollection<ApplicationUser> TeamMembers { get; set; }
 
-        public ICollection<CompanyCategory> CompanyCategories { get; set; }
+        public virtual ICollection<CompanyCategory> CompanyCategories { get; set; }
 
     }
 }
