@@ -87,5 +87,10 @@ namespace TaskPlanner.Service
             project.Name = viewModel.Name;
             this.dbContext.SaveChanges();
         }
+
+        public List<DailyAgenda> GetAllProjectsByProjectName(string projectName)
+        {
+            return this.dbContext.DailyAgendas.Where(project => project.Project == projectName).ToList();
+        }
     }
 }

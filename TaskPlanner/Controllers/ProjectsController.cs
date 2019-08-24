@@ -119,9 +119,21 @@ namespace TaskPlanner.Controllers
             var allUsersFromDb = this.userService.GetAllUsersFromDb();
             var employeesFromCompany = this.userService.GetAllUsersFromCompany(allUsersFromDb, currentCompanyName);
 
-            var model = employeesFromCompany
-                .Where(currentUser => currentUser.DailyAgendas.All(a => a.Project.Contains(project.Name)))
-                .ToList();
+            var agendas = this.projectService.GetAllProjectsByProjectName(project.Name);
+
+            var model = new List<ApplicationUser>();
+
+            foreach (var agenda in agendas)
+            {
+                foreach (var employee in employeesFromCompany)
+                {
+                    if (agenda.ApplicationUserId == employee.Id)
+                    {
+                        model.Add(employee);
+                    }
+
+                }
+            }
 
             return this.View(model);
         }

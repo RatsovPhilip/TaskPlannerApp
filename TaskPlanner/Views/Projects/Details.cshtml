@@ -10,6 +10,13 @@
     <div class="row">
         <div class="col-md-4">
             <section>
+                @if (Model.Count == 0)
+                {
+                    <hr/>
+                    <div>
+                        Nobody is working on the current project!
+                    </div>
+                }
                 @foreach (var employees in Model)
                 {
                     <hr />

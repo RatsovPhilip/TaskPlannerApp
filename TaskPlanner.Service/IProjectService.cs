@@ -17,5 +17,7 @@ namespace TaskPlanner.Service
         ProjectViewModel GetCategoryById(string id);
 
         void UpdateEditedProject(ProjectViewModel viewModel);
+
+        List<DailyAgenda> GetAllProjectsByProjectName(string projectName);
     }
 }
