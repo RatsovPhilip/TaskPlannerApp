@@ -24,7 +24,9 @@ namespace TaskPlanner.Service
         }
         public void AddProject(ProjectCategoryAddViewModel viewModel, string userId)
         {
-            var companyToAdd = this.companyService.GetCompanyByUserId(userId);
+            var user = this.userService.GetCurrentUserFromDb(userId);
+            var companyName = user.CompanyName;
+            var companyToAdd = this.companyService.GetCompanyByName(companyName);
 
             var categoryToAdd = new Category
             {

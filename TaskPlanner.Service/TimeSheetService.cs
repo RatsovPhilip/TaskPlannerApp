@@ -21,6 +21,7 @@ namespace TaskPlanner.Service
 
         public void AddNewEvent(DailyAgenda dailyAgenda)
         {
+
             this.dbContext.DailyAgendas.Add(dailyAgenda);
         }
 

@@ -53,17 +53,15 @@ namespace TaskPlanner.Service
 
         public void JoinCompany(ApplicationUser user, string companyName)
         {
-            var company = this.GetCompanyByUserId(companyName);
+            var company = this.GetCompanyByName(companyName);
             user.CompanyName = companyName;
             company.TeamMembers.Add(user);
             this.dbContext.SaveChanges();
 
         }
 
-        public Company GetCompanyByUserId(string userId)
+        public Company GetCompanyByName(string companyName)
         {
-            var user = this.userService.GetCurrentUserFromDb(userId);
-            var companyName = user.CompanyName;
             return this.dbContext.Companies.FirstOrDefault(c => c.Name == companyName);
         }
 

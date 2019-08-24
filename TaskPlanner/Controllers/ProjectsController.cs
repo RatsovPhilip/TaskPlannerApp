@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using TaskPlanner.Data.Models;
 using TaskPlanner.Service;
 using TaskPlanner.Service.Common;
@@ -65,6 +66,7 @@ namespace TaskPlanner.Controllers
             return this.Redirect("/Projects/Manage");
         }
 
+        [Authorize(Roles = GlobalConstants.RoleAdmin)]
         public IActionResult Edit(string id)
         {
             if (id == null)
@@ -94,6 +96,34 @@ namespace TaskPlanner.Controllers
             }
 
             return View(viewModel);
+        }
+
+        [Authorize(Roles = GlobalConstants.RoleAdmin)]
+        public IActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var project = this.projectService.GetCategoryById(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            var userId = GetCurrentUserId();
+            var user = this.userService.GetCurrentUserFromDb(userId);
+            var currentCompanyName = user.CompanyName;
+
+            var allUsersFromDb = this.userService.GetAllUsersFromDb();
+            var employeesFromCompany = this.userService.GetAllUsersFromCompany(allUsersFromDb, currentCompanyName);
+
+            var model = employeesFromCompany
+                .Where(currentUser => currentUser.DailyAgendas.All(a => a.Project.Contains(project.Name)))
+                .ToList();
+
+            return this.View(model);
         }
 
         private string GetCurrentUserId()

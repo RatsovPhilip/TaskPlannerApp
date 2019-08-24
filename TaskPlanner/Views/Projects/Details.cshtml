@@ -1,0 +1,24 @@
+﻿@using TaskPlanner.Data.Models
+@model List<ApplicationUser>
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Project Details</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <section>
+                @foreach (var employees in Model)
+                {
+                    <hr />
+                    <div>
+                       @employees.FullName
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+

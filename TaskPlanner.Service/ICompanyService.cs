@@ -15,7 +15,7 @@ namespace TaskPlanner.Service
 
         bool CheckIfCompanyNameIsAvailable(string name);
 
-        Company GetCompanyByUserId(string companyName);
+        Company GetCompanyByName(string companyName);
 
     }
 }
