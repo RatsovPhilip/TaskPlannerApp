@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TaskPlanner.Data.Models;
+﻿using System.Collections.Generic;
 using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
@@ -18,6 +15,6 @@ namespace TaskPlanner.Service
 
         void UpdateEditedProject(ProjectViewModel viewModel);
 
-        List<DailyAgenda> GetAllProjectsByProjectName(string projectName);
+        List<DailyAgendaByProjectNameViewModel> GetAllProjectsByProjectName(string projectName);
     }
 }

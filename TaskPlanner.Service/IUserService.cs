@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using TaskPlanner.Data.Models;
+using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
 {
@@ -8,8 +9,6 @@ namespace TaskPlanner.Service
     {
         ApplicationUser GetCurrentUserFromDb(string Id);
 
-        List<ApplicationUser> GetAllUsersFromDb();
-
-        List<ApplicationUser> GetAllUsersFromCompany(List<ApplicationUser> allUsersFromDb,string companyName);
+        List<UserViewModel> GetAllUsersFromDb();
     }
 }

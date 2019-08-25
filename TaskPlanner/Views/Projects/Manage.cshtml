@@ -14,12 +14,6 @@
             @project.Name
         </div>
         <div class="col col-lg-2">
-            <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@project.Id">
-                <button type="submit" class="btn btn-outline-danger mb-2">Delete</button>
-
-            </form>
-        </div>
-        <div class="col col-lg-2">
             <form asp-area="" asp-controller="Projects" asp-action="Details" method="get" asp-route-id="@project.Id">
                 <button type="submit" class="btn btn-outline-info mb-2">Details</button>
             </form>
@@ -27,6 +21,12 @@
         <div class="col col-lg-2">
             <form asp-area="" asp-controller="Projects" asp-action="Edit" method="get" asp-route-id="@project.Id">
                 <button type="submit" class="btn btn-outline-primary mb-2">Edit</button>
+            </form>
+        </div>
+        <div class="col col-lg-2">
+            <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@project.Id">
+                <button type="submit" class="btn btn-outline-danger mb-2">Delete</button>
+
             </form>
         </div>
     </div>

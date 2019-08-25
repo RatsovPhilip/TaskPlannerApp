@@ -88,9 +88,11 @@ namespace TaskPlanner.Service
             this.dbContext.SaveChanges();
         }
 
-        public List<DailyAgenda> GetAllProjectsByProjectName(string projectName)
+        public List<DailyAgendaByProjectNameViewModel> GetAllProjectsByProjectName(string projectName)
         {
-            return this.dbContext.DailyAgendas.Where(project => project.Project == projectName).ToList();
+            var projects = this.dbContext.DailyAgendas.Where(project => project.Project == projectName).ToList();
+
+            return Mapper.Map<List<DailyAgendaByProjectNameViewModel>>(projects);
         }
     }
 }

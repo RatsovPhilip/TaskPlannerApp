@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
 using TaskPlanner.Service.Common;
+using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
 {
@@ -17,21 +19,11 @@ namespace TaskPlanner.Service
             this.dbContext = dbContext;
         }
 
-        public List<ApplicationUser> GetAllUsersFromCompany(List<ApplicationUser> allUsersFromDb, string companyName)
-        {
-            return allUsersFromDb.Where(user => user.CompanyName == companyName).ToList();
-        }
-
-        public List<ApplicationUser> GetAllUsersFromDb()
+        public List<UserViewModel> GetAllUsersFromDb()
         {
             var allUsersFromDb = this.dbContext.Users.ToList();
 
-            var result = new List<ApplicationUser>();
-
-            foreach (var item in allUsersFromDb)
-            {
-                result.Add((ApplicationUser)item);
-            }
+            var result = Mapper.Map<List<UserViewModel>>(allUsersFromDb);
 
             return result;
 

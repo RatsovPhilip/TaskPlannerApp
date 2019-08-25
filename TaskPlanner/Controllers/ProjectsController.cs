@@ -117,11 +117,11 @@ namespace TaskPlanner.Controllers
             var currentCompanyName = user.CompanyName;
 
             var allUsersFromDb = this.userService.GetAllUsersFromDb();
-            var employeesFromCompany = this.userService.GetAllUsersFromCompany(allUsersFromDb, currentCompanyName);
+            var employeesFromCompany = this.GetAllUsersFromCompany(allUsersFromDb, currentCompanyName);
 
             var agendas = this.projectService.GetAllProjectsByProjectName(project.Name);
 
-            var model = new List<ApplicationUser>();
+            var model = new List<UserViewModel>();
 
             foreach (var agenda in agendas)
             {
@@ -131,7 +131,6 @@ namespace TaskPlanner.Controllers
                     {
                         model.Add(employee);
                     }
-
                 }
             }
 
@@ -141,6 +140,11 @@ namespace TaskPlanner.Controllers
         private string GetCurrentUserId()
         {
             return this.userManager.GetUserId(this.User);
+        }
+
+        private List<UserViewModel> GetAllUsersFromCompany(List<UserViewModel> allUsersFromDb, string companyName)
+        {
+            return allUsersFromDb.Where(user => user.CompanyName == companyName).ToList();
         }
     }
 }
