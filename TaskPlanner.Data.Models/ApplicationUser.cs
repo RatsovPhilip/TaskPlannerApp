@@ -12,7 +12,6 @@
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.DailyAgendas = new HashSet<DailyAgenda>();
-            this.UsersCategories = new HashSet<UsersCategories>();
         }
 
         [Required]
@@ -24,9 +23,5 @@
         public virtual ICollection<DailyAgenda> DailyAgendas { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
-
-        public virtual ICollection<UsersCategories> UsersCategories { get; set; }
-
-
     }
 }
