@@ -48,7 +48,7 @@ namespace TaskPlanner.Controllers
             return this.View();
         }
 
-        [Authorize(Roles = GlobalConstants.RoleAdmin)]
+        [Authorize]
         public IActionResult Manage(CompanyProjectViewModel viewModel)
         {
             var userId = this.GetCurrentUserId();
@@ -98,7 +98,7 @@ namespace TaskPlanner.Controllers
             return View(viewModel);
         }
 
-        [Authorize(Roles = GlobalConstants.RoleAdmin)]
+        [Authorize]
         public IActionResult Details(string id)
         {
             if (id == null)

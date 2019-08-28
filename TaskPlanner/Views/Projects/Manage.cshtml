@@ -1,11 +1,19 @@
 ﻿@using TaskPlanner.ViewModels
+@using TaskPlanner.Service.Common
 @model CompanyProjectViewModel
 @{
     ViewData["Title"] = "Manage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Manage Projects</h1>
+@if (this.User.IsInRole(GlobalConstants.RoleAdmin))
+{
+    <h1>Manage Projects</h1>
+}
+else
+{
+    <h1>View Projects</h1>
+}
 <hr />
 @foreach (var project in Model.ProjectsName)
 {
@@ -18,17 +26,20 @@
                 <button type="submit" class="btn btn-outline-info mb-2">Details</button>
             </form>
         </div>
-        <div class="col col-lg-2">
-            <form asp-area="" asp-controller="Projects" asp-action="Edit" method="get" asp-route-id="@project.Id">
-                <button type="submit" class="btn btn-outline-primary mb-2">Edit</button>
-            </form>
-        </div>
-        <div class="col col-lg-2">
-            <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@project.Id">
-                <button type="submit" class="btn btn-outline-danger mb-2">Delete</button>
+        @if (this.User.IsInRole(GlobalConstants.RoleAdmin))
+        {
+            <div class="col col-lg-2">
+                <form asp-area="" asp-controller="Projects" asp-action="Edit" method="get" asp-route-id="@project.Id">
+                    <button type="submit" class="btn btn-outline-primary mb-2">Edit</button>
+                </form>
+            </div>
+            <div class="col col-lg-2">
+                <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@project.Id">
+                    <button type="submit" class="btn btn-outline-danger mb-2">Delete</button>
 
-            </form>
-        </div>
+                </form>
+            </div>
+        }
     </div>
     <hr />
 }
