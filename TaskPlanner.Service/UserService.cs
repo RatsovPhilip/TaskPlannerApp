@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TaskPlanner.Data;
 using TaskPlanner.Data.Models;
-using TaskPlanner.Service.Common;
 using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
@@ -35,7 +32,5 @@ namespace TaskPlanner.Service
             
             return (ApplicationUser)user;
         }
-
-
     }
 }
