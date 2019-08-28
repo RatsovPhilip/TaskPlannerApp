@@ -44,6 +44,7 @@ namespace TaskPlanner.Service
             };
 
             user.CompanyName = companyForAdd.Name;
+            user.IsPromoted = true;
             companyForAdd.TeamMembers.Add(user);
             this.AddCompanyDefaultProjects(companyForAdd);
 

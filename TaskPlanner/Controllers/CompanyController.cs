@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TaskPlanner.Data.Models;
 using TaskPlanner.Service;
@@ -82,6 +85,44 @@ namespace TaskPlanner.Controllers
                 return Redirect("/");
             }
             return this.View();
+        }
+
+        public IActionResult Promote()
+        {
+            var userId = GetCurrentUserId();
+            var user = this.userService.GetCurrentUserFromDb(userId);
+            var currentCompanyName = user.CompanyName;
+
+            var allUsersFromDb = this.userService.GetAllUsersFromDb();
+            var employeesFromCompany = this.GetAllUsersFromCompany(allUsersFromDb, currentCompanyName);
+
+            var model = Mapper.Map<List<UserViewModel>>(employeesFromCompany);
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Promote(string Id)
+        {
+            var userFromDb = this.userService.GetCurrentUserFromDb(Id);
+
+            await this.userManager.AddToRoleAsync(userFromDb, GlobalConstants.RoleAdmin);
+
+            this.userService.PromoteUser(userFromDb);
+
+            return this.Redirect("/Company/Promote");
+
+
+        }
+
+        private List<UserViewModel> GetAllUsersFromCompany(List<UserViewModel> allUsersFromDb, string companyName)
+        {
+            return allUsersFromDb.Where(user => user.CompanyName == companyName).ToList();
+        }
+
+        private string GetCurrentUserId()
+        {
+            return this.userManager.GetUserId(this.User);
         }
     }
 }

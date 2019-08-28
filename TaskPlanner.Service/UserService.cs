@@ -32,5 +32,11 @@ namespace TaskPlanner.Service
             
             return (ApplicationUser)user;
         }
+
+        public void PromoteUser(ApplicationUser user)
+        {
+            user.IsPromoted = true;
+            dbContext.SaveChanges();
+        }
     }
 }

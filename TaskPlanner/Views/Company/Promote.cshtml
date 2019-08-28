@@ -1,0 +1,35 @@
+﻿@using TaskPlanner.ViewModels
+@model List<UserViewModel>
+@{
+    ViewData["Title"] = "Promote";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Promote</h1>
+<hr />
+
+@foreach (var user in Model)
+{
+    if(user.Email == this.User.Identity.Name) { continue; }
+    <div class="row">
+        <div class="col">
+            @user.FullName
+        </div>
+        @if (user.IsPromoted)
+        {
+            <div class="col col-lg-2">
+                Admin
+            </div>
+        }
+        else
+        {
+            <div class="col col-lg-2">
+                <form asp-area="" asp-controller="Company" asp-action="Promote" method="post" asp-route-id="@user.Id">
+                    <button type="submit" class="btn btn-outline-info mb-2">Promote</button>
+                </form>
+            </div>
+        }
+    </div>
+    <hr />
+}
+

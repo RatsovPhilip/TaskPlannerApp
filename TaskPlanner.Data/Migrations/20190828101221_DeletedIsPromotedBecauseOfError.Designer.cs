@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskPlanner.Data;
 
 namespace TaskPlanner.Data.Migrations
 {
     [DbContext(typeof(TaskPlannerDbContext))]
-    partial class TaskPlannerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190828101221_DeletedIsPromotedBecauseOfError")]
+    partial class DeletedIsPromotedBecauseOfError
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -289,8 +291,6 @@ namespace TaskPlanner.Data.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired();
-
-                    b.Property<bool>("IsPromoted");
 
                     b.HasIndex("CompanyId");
 

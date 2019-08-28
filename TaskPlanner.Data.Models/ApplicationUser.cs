@@ -20,6 +20,8 @@
         [Required]
         public string CompanyName { get; set; }
 
+        public bool IsPromoted { get; set; }
+
         public virtual ICollection<DailyAgenda> DailyAgendas { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
