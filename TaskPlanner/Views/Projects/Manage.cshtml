@@ -6,41 +6,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (this.User.IsInRole(GlobalConstants.RoleAdmin))
-{
-    <h1>Manage Projects</h1>
-}
-else
-{
-    <h1>View Projects</h1>
-}
-<hr />
-@foreach (var project in Model.ProjectsName)
-{
-    <div class="row">
-        <div class="col">
-            @project.Name
-        </div>
-        <div class="col col-lg-2">
-            <form asp-area="" asp-controller="Projects" asp-action="Details" method="get" asp-route-id="@project.Id">
-                <button type="submit" class="btn btn-outline-info mb-2">Details</button>
-            </form>
-        </div>
-        @if (this.User.IsInRole(GlobalConstants.RoleAdmin))
-        {
-            <div class="col col-lg-2">
-                <form asp-area="" asp-controller="Projects" asp-action="Edit" method="get" asp-route-id="@project.Id">
-                    <button type="submit" class="btn btn-outline-primary mb-2">Edit</button>
-                </form>
-            </div>
-            <div class="col col-lg-2">
-                <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@project.Id">
-                    <button type="submit" class="btn btn-outline-danger mb-2">Delete</button>
+<body class="bg-gradient-primary">
+    @if (this.User.IsInRole(GlobalConstants.RoleAdmin))
+    {
+        <h1 class="text-gray-900">Manage Projects</h1>
+    }
+    else
+    {
+        <h1>View Projects</h1>
+    }
+    <hr />
 
-                </form>
+    <div class="card shadow mb-4 border-bottom-warning">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var project in Model.ProjectsName)
+                        {
+                            <tr>
+                                <th>@project.Name</th>
+                                <th>
+                                    <form asp-area="" asp-controller="Projects" asp-action="Details" method="get" asp-route-id="@project.Id">
+                                        <button type="submit" class="btn btn-outline-info mb-2">Details</button>
+                                    </form>
+                                </th>
+                                @if (this.User.IsInRole(GlobalConstants.RoleAdmin))
+                                {
+                                    <th>
+                                        <form asp-area="" asp-controller="Projects" asp-action="Edit" method="get" asp-route-id="@project.Id">
+                                            <button type="submit" class="btn btn-outline-primary mb-2">Edit</button>
+                                        </form>
+                                    </th>
+                                    <th>
+                                        <form asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@project.Id">
+                                            <button type="submit" class="btn btn-outline-danger mb-2">Delete</button>
+                                        </form>
+                                    </th>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
-        }
+        </div>
     </div>
     <hr />
-}
+</body>
+
 
