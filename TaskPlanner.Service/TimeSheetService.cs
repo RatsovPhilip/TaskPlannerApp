@@ -31,13 +31,11 @@ namespace TaskPlanner.Service
             return result;
         }
 
-        public List<DailyAgendaViewModel> GetAllEventsOfUserFromDB(string userId)
+        public List<DailyAgenda> GetAllEventsOfUserFromDB(string userId)
         {
             var eventsFromDb = dbContext.DailyAgendas.Where(da => da.ApplicationUserId == userId).ToList();
 
-            var mappedEvents = Mapper.Map<List<DailyAgendaViewModel>>(eventsFromDb);
-
-            return mappedEvents;
+            return eventsFromDb;
         }
 
         public void UpdateDatabase()

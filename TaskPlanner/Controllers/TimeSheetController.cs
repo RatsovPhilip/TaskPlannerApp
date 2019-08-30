@@ -43,7 +43,11 @@ namespace TaskPlanner.Controllers
 
             var userId = GetCurrentUserId();
 
-            return new JsonResult(this.timeSheetService.GetAllEventsOfUserFromDB(userId));
+            var eventsFromDb = this.timeSheetService.GetAllEventsOfUserFromDB(userId);
+
+            var mappedEvents = Mapper.Map<List<DailyAgendaViewModel>>(eventsFromDb);
+
+            return new JsonResult(mappedEvents);
         }
 
         [HttpPost]

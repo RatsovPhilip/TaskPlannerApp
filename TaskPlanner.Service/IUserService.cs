@@ -9,7 +9,7 @@ namespace TaskPlanner.Service
     {
         ApplicationUser GetCurrentUserFromDb(string Id);
 
-        List<UserViewModel> GetAllUsersFromDb();
+        List<ApplicationUser> GetAllUsersFromDb();
 
         void PromoteUser(ApplicationUser user);
     }

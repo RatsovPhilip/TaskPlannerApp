@@ -94,7 +94,9 @@ namespace TaskPlanner.Controllers
             var currentCompanyName = user.CompanyName;
 
             var allUsersFromDb = this.userService.GetAllUsersFromDb();
-            var employeesFromCompany = this.GetAllUsersFromCompany(allUsersFromDb, currentCompanyName);
+            var mappedUsersFromDb = Mapper.Map<List<UserViewModel>>(allUsersFromDb);
+
+            var employeesFromCompany = this.GetAllUsersFromCompany(mappedUsersFromDb, currentCompanyName);
 
             var model = Mapper.Map<List<UserViewModel>>(employeesFromCompany);
 

@@ -81,13 +81,15 @@ namespace TaskPlanner.Controllers
             }
 
             var project = this.projectService.GetCategoryById(id);
+            var projectModel = Mapper.Map<ProjectViewModel>(project);
 
-            if (project == null)
+
+            if (projectModel == null)
             {
                 return NotFound();
             }
 
-            return this.View(project);
+            return this.View(projectModel);
         }
 
         [Authorize(Roles = GlobalConstants.RoleAdmin)]
@@ -123,13 +125,17 @@ namespace TaskPlanner.Controllers
             var currentCompanyName = user.CompanyName;
 
             var allUsersFromDb = this.userService.GetAllUsersFromDb();
-            var employeesFromCompany = this.GetAllUsersFromCompany(allUsersFromDb, currentCompanyName);
+            var mappedUsersFromDb = Mapper.Map<List<UserViewModel>>(allUsersFromDb);
+
+            var employeesFromCompany = this.GetAllUsersFromCompany(mappedUsersFromDb, currentCompanyName);
 
             var agendas = this.projectService.GetAllProjectsByProjectName(project.Name);
 
+            var agendasModel = Mapper.Map<List<DailyAgendaByProjectNameViewModel>>(agendas);
+
             var model = new List<UserViewModel>();
 
-            foreach (var agenda in agendas)
+            foreach (var agenda in agendasModel)
             {
                 foreach (var employee in employeesFromCompany)
                 {

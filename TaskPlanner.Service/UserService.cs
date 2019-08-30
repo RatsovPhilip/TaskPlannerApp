@@ -16,11 +16,16 @@ namespace TaskPlanner.Service
             this.dbContext = dbContext;
         }
 
-        public List<UserViewModel> GetAllUsersFromDb()
+        public List<ApplicationUser> GetAllUsersFromDb()
         {
             var allUsersFromDb = this.dbContext.Users.ToList();
 
-            var result = Mapper.Map<List<UserViewModel>>(allUsersFromDb);
+            var result = new List<ApplicationUser>();
+
+            foreach (var user in allUsersFromDb)
+            {
+                result.Add((ApplicationUser)user);
+            }
 
             return result;
 

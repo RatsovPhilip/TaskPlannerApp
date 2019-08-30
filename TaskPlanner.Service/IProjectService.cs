@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TaskPlanner.Data.Models;
 using TaskPlanner.ViewModels;
 
 namespace TaskPlanner.Service
@@ -11,10 +12,10 @@ namespace TaskPlanner.Service
 
         void DeleteProjectById(string name);
 
-        ProjectViewModel GetCategoryById(string id);
+        Category GetCategoryById(string id);
 
         void UpdateEditedProject(ProjectViewModel viewModel);
 
-        List<DailyAgendaByProjectNameViewModel> GetAllProjectsByProjectName(string projectName);
+        List<DailyAgenda> GetAllProjectsByProjectName(string projectName);
     }
 }

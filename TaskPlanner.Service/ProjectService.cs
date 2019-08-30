@@ -73,12 +73,10 @@ namespace TaskPlanner.Service
             }
         }
 
-        public ProjectViewModel GetCategoryById(string id)
+        public Category GetCategoryById(string id)
         {
             var projectFromDb = this.dbContext.Categories.Where(c => c.Id == id).FirstOrDefault();
-            var project = Mapper.Map<ProjectViewModel>(projectFromDb);
-
-            return project;
+            return projectFromDb;
         }
 
         public void UpdateEditedProject(ProjectViewModel viewModel)
@@ -88,11 +86,11 @@ namespace TaskPlanner.Service
             this.dbContext.SaveChanges();
         }
 
-        public List<DailyAgendaByProjectNameViewModel> GetAllProjectsByProjectName(string projectName)
+        public List<DailyAgenda> GetAllProjectsByProjectName(string projectName)
         {
             var projects = this.dbContext.DailyAgendas.Where(project => project.Project == projectName).ToList();
 
-            return Mapper.Map<List<DailyAgendaByProjectNameViewModel>>(projects);
+            return projects;
         }
     }
 }
