@@ -9,10 +9,25 @@
 
 @if (!this.User.Identity.IsAuthenticated)
 {
-    <div class="jumbotron w-75 mx-auto">
-        <hr class="hr-2 bg-dark" />
-        <h3 class="mt-4"><a href="/Identity/Account/Login">Login</a></h3>
-        <h3 class="mt-4"><a href="/Identity/Account/Register">Register</a> if you don't have an account.</h3>
+    <div class="row justify-content-center">
+        <div class="col-xl col-lg-5 col-md-9">
+            <div class="card o-hidden border-bottom-danger shadow-lg my-2">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-gradient-warning">
+                            <div class="p-5">
+                                <a href="/Identity/Account/Register" class="btn btn-outline-primary btn-lg btn-block">Register</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <a href="/Identity/Account/Login" class="btn btn-outline-primary btn-lg btn-block">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }
 else if (Model.CompanyName == null)

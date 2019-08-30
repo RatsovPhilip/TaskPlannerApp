@@ -62,6 +62,11 @@ namespace TaskPlanner.Areas.Identity.Pages.Account
 
         public void OnGet(string returnUrl = null)
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/Home/Error");
+            }
+
             ReturnUrl = returnUrl;
         }
 
