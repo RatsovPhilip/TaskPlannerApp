@@ -1,9 +1,10 @@
-﻿@{
+﻿@model UserViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to TaskPlanner</h1>
+    <h1 class="display-4 text-white-50">Welcome to TaskPlanner</h1>
 </div>
 
 @if (!this.User.Identity.IsAuthenticated)
@@ -14,19 +15,10 @@
         <h3 class="mt-4"><a href="/Identity/Account/Register">Register</a> if you don't have an account.</h3>
     </div>
 }
-else if (this.User.IsInRole("Administrator"))
+else if (Model.CompanyName == null)
 {
     <div class="jumbotron color-white w-75 mx-auto">
-        <h3 class="mt-4"><a href="/Projects/Add"> Add Projects</a></h3>
-        <h3 class="mt-4"><a href="/Company/Promote"> Promote a Team Member</a></h3>
-        <h3 class="mt-4"><a href="/Projects/Manage"> Manage Projects</a></h3>
-        <h3 class="mt-4"><a href="/TimeSheet/Me"> My Planner</a></h3>
-    </div>
-}
-else
-{
-    <div class="jumbotron color-white w-75 mx-auto">
-        <h3 class="mt-4"><a href="/TimeSheet/Me"> My Planner</a></h3>
-        <h3 class="mt-4"><a href="/Projects/Manage"> View Projects</a></h3>
+        <h2 class="text-gray-900">Your company name is missing</h2>
+        <h3 class="mt-4"><a href="/FirstLogIn/Create"> Choose options</a></h3>
     </div>
 }

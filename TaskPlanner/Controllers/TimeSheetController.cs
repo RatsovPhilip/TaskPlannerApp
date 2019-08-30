@@ -26,6 +26,12 @@ namespace TaskPlanner.Controllers
         {
             var userId = GetCurrentUserId();
 
+            var user = this.userService.GetCurrentUserFromDb(userId);
+            if (user.CompanyName == null)
+            {
+                return this.Redirect("/");
+            }
+
             viewModel = this.projectService.GetAllCompanyProjects(userId, viewModel);
 
             return this.View(viewModel);

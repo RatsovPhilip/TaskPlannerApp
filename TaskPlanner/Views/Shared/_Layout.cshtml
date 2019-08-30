@@ -34,8 +34,41 @@
                                 <a class="nav-link" href="/Identity/Account/Register">Register</a>
                             </li>
                         }
+                        else if (this.User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Projects
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/Projects/Add">Add</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Projects/Manage">Manage</a>
+                                </div>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Company/Promote">Promote</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/TimeSheet/Me">My Planner</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Identity/Account/Logout">Logout</a>
+                            </li>
+                        }
                         else
                         {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Projects
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/Projects/Manage">View</a>
+                                </div>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/TimeSheet/Me">My Planner</a>
+                            </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="/Identity/Account/Logout">Logout</a>
                             </li>
@@ -64,6 +97,7 @@
     <!-- all js here -->
     <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-easing/jquery.easing.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -73,5 +107,5 @@
     <script src="~/js/demo/datatables-demo.js" asp-append-version="true"></script>
 
     @this.RenderSection("Scripts", required: false)
-    </body>
+</body>
 </html>

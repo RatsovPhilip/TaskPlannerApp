@@ -5,27 +5,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Project Details</h1>
+<h1 class="text-white-50">Project Details</h1>
 <hr />
 @if (Model.Count == 0)
 {
-    <div class="row">
-        <div class="align-center">
-            <div>
-                Currently nobody is working on that project.
+    <div class="card shadow mb-4 border-bottom-warning">
+        <div class="card-body">
+            <div class="align-center">
+                <div>
+                    Currently nobody is working on that project.
+                </div>
             </div>
-        </div>
-    </div>
-}
-@foreach (var employees in Model)
-{
-    <div class="row">
-        <div class="col">
-            Employee: @employees.FullName
-        </div>
-        <div class="col col-lg-4">
-            Email: @employees.Email
         </div>
     </div>
     <hr />
 }
+else
+{
+    <div class="card shadow mb-4 border-bottom-warning">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var employees in Model)
+                        {
+                            <tr>
+                                <td>@employees.FullName</td>
+                                <td>@employees.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+

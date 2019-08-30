@@ -9,11 +9,11 @@
 <body class="bg-gradient-primary">
     @if (this.User.IsInRole(GlobalConstants.RoleAdmin))
     {
-        <h1 class="text-gray-900">Manage Projects</h1>
+        <h1 class="text-white-50">Manage Projects</h1>
     }
     else
     {
-        <h1>View Projects</h1>
+        <h1 class="text-white-50">View Projects</h1>
     }
     <hr />
 
@@ -32,15 +32,15 @@
                     <tbody>
                         @foreach (var project in Model.ProjectsName)
                         {
-                            <tr>
-                                <th>@project.Name</th>
-                                <th>
-                                    <form asp-area="" asp-controller="Projects" asp-action="Details" method="get" asp-route-id="@project.Id">
-                                        <button type="submit" class="btn btn-outline-info mb-2">Details</button>
-                                    </form>
-                                </th>
-                                @if (this.User.IsInRole(GlobalConstants.RoleAdmin))
-                                {
+                            @if (this.User.IsInRole(GlobalConstants.RoleAdmin))
+                            {
+                                <tr>
+                                    <td>@project.Name</td>
+                                    <td>
+                                        <form asp-area="" asp-controller="Projects" asp-action="Details" method="get" asp-route-id="@project.Id">
+                                            <button type="submit" class="btn btn-outline-info mb-2">Details</button>
+                                        </form>
+                                    </td>
                                     <th>
                                         <form asp-area="" asp-controller="Projects" asp-action="Edit" method="get" asp-route-id="@project.Id">
                                             <button type="submit" class="btn btn-outline-primary mb-2">Edit</button>
@@ -51,8 +51,25 @@
                                             <button type="submit" class="btn btn-outline-danger mb-2">Delete</button>
                                         </form>
                                     </th>
-                                }
-                            </tr>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>@project.Name</td>
+                                    <td>
+                                        <form asp-area="" asp-controller="Projects" asp-action="Details" method="get" asp-route-id="@project.Id">
+                                            <button type="submit" class="btn btn-outline-info mb-2">Details</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        N/A
+                                    </td>
+                                    <td>
+                                        N/A
+                                    </td>
+                                </tr>
+                            }
                         }
                     </tbody>
                 </table>
