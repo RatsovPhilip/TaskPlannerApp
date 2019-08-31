@@ -12,6 +12,7 @@
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.DailyAgendas = new HashSet<DailyAgenda>();
+            this.Images = new HashSet<Image>();
         }
 
         [Required]

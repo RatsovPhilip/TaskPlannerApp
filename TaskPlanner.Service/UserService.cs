@@ -38,6 +38,11 @@ namespace TaskPlanner.Service
             return (ApplicationUser)user;
         }
 
+        public Image GetUserImage(string userId)
+        {
+            return this.dbContext.Images.FirstOrDefault(i => i.ApplicationUserId == userId);
+        }
+
         public void PromoteUser(ApplicationUser user)
         {
             user.IsPromoted = true;

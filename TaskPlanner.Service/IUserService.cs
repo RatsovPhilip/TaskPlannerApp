@@ -12,5 +12,7 @@ namespace TaskPlanner.Service
         List<ApplicationUser> GetAllUsersFromDb();
 
         void PromoteUser(ApplicationUser user);
+
+        Image GetUserImage(string userId);
     }
 }

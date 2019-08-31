@@ -3,14 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Infrastructure;
 
 namespace TaskPlanner.ViewModels
 {
-    public class UserViewModel : IMapFrom<ApplicationUser>
+    public class ProfileEditPostViewModel
     {
-
         public string Id { get; set; }
 
         [Required]
@@ -25,5 +22,7 @@ namespace TaskPlanner.ViewModels
         public string FullName { get; set; }
 
         public bool IsPromoted { get; set; }
+
+        public IFormFile Images { get; set; }
     }
 }

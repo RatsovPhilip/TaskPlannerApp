@@ -8,9 +8,8 @@ using TaskPlanner.Infrastructure;
 
 namespace TaskPlanner.ViewModels
 {
-    public class UserViewModel : IMapFrom<ApplicationUser>
+    public class ProfileEditViewModel : IMapFrom<ApplicationUser>
     {
-
         public string Id { get; set; }
 
         [Required]
@@ -25,5 +24,7 @@ namespace TaskPlanner.ViewModels
         public string FullName { get; set; }
 
         public bool IsPromoted { get; set; }
+
+        public string Images { get; set; }
     }
 }

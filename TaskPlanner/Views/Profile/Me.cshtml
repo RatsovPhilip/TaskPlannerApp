@@ -1,5 +1,5 @@
 ﻿@using TaskPlanner.ViewModels;
-@model UserViewModel;
+@model ProfileEditViewModel;
 @{
     ViewData["Title"] = "Me";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -27,6 +27,16 @@
                             <div class="text-center">
                                 <div>Company Name : @Model.CompanyName</div>
                                 <hr />
+                                @if (Model.Images == null)
+                                {
+                                    <div>Profile picture : N/A</div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        Profile picture : <img class="img-thumbnail" style="width: 256px" src="~/img/@Model.Images" alt="">
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
