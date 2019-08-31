@@ -1,15 +1,12 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TaskPlanner.Data;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service.Common;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Service
+﻿namespace TaskPlanner.Service
 {
+    using AutoMapper;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data;
+    using Data.Models;
+    using ViewModels;
+
     public class ProjectService : IProjectService
     {
         private readonly TaskPlannerDbContext dbContext;

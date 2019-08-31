@@ -1,15 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TaskPlanner.Data;
-using TaskPlanner.Data.Models;
-using TaskPlanner.ViewModels;
-using Xunit;
-
-namespace TaskPlanner.Service.Tests
+﻿namespace TaskPlanner.Service.Tests
 {
+    using Microsoft.EntityFrameworkCore;
+    using System.Linq;
+    using Data;
+    using Data.Models;
+    using ViewModels;
+    using Xunit;
 
     public class CompanyServiceTests
     {
@@ -136,6 +132,5 @@ namespace TaskPlanner.Service.Tests
             Assert.Equal(company.Name,actual);
             Assert.Single(companyFromDb.TeamMembers);
         }
-
     }
 }

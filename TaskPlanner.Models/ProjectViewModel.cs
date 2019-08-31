@@ -1,8 +1,8 @@
-﻿using TaskPlanner.Data.Models;
-using TaskPlanner.Infrastructure;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using Data.Models;
+    using Infrastructure;
+
     public class ProjectViewModel : IMapFrom<Category>
     {
         public string Id { get; set; }

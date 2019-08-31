@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Data.Models.Enums;
-using TaskPlanner.Infrastructure;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using Data.Models;
+    using Data.Models.Enums;
+    using Infrastructure;
+
     public class DailyAgendaViewModel : IMapFrom<DailyAgenda>
     {
         public string Id { get; set; }

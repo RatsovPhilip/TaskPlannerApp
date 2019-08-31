@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using TaskPlanner.Data.Models;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Service
+﻿namespace TaskPlanner.Service
 {
+    using System.Collections.Generic;
+    using Data.Models;
+    using ViewModels;
+
     public interface IProjectService
     {
         void AddProject(ProjectCategoryAddViewModel viewModel,string userId);

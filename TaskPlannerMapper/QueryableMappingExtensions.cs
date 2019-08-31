@@ -1,10 +1,10 @@
-﻿using AutoMapper.QueryableExtensions;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-
-namespace TaskPlanner.Infrastructure
+﻿namespace TaskPlanner.Infrastructure
 {
+    using AutoMapper.QueryableExtensions;
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+
     public static class QueryableMappingExtensions
     {
         public static IQueryable<TDestination> To<TDestination>(

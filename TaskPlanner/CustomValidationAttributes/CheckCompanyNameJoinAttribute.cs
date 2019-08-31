@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskPlanner.Service;
-
-namespace TaskPlanner.CustomValidationAttributes
+﻿namespace TaskPlanner.CustomValidationAttributes
 {
+    using System.ComponentModel.DataAnnotations;
+    using Service;
+
     public class CheckCompanyNameJoinAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)

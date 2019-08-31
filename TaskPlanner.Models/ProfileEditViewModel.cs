@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Infrastructure;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+    using Data.Models;
+    using Infrastructure;
+
     public class ProfileEditViewModel : IMapFrom<ApplicationUser>
     {
         public string Id { get; set; }

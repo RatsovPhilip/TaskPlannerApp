@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TaskPlanner.Data.Models
+﻿namespace TaskPlanner.Data.Models
 {
+    using System;
+
     public class CreditCard
     {
         public CreditCard()

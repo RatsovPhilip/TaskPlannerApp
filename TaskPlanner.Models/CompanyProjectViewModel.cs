@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using System.Collections.Generic;
+
     public class CompanyProjectViewModel
     {
         public CompanyProjectViewModel()

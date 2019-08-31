@@ -1,13 +1,13 @@
-﻿using System.Diagnostics;
-using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Controllers
+﻿namespace TaskPlanner.Controllers
 {
+    using System.Diagnostics;
+    using AutoMapper;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Data.Models;
+    using Service;
+    using ViewModels;
+
     public class HomeController : Controller
     {
         private readonly IUserService userService;

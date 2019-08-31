@@ -1,17 +1,17 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service;
-using TaskPlanner.Service.Common;
-using TaskPlanner.ViewModels;
-using TaskPlanner.Web.Models;
-
-namespace TaskPlanner.Controllers
+﻿namespace TaskPlanner.Controllers
 {
+    using AutoMapper;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Data.Models;
+    using Service;
+    using Service.Common;
+    using ViewModels;
+    using Web.Models;
+
     public class CompanyController : Controller
     {
         private readonly ICompanyService companyService;
@@ -113,8 +113,6 @@ namespace TaskPlanner.Controllers
             this.userService.PromoteUser(userFromDb);
 
             return this.Redirect("/Company/Promote");
-
-
         }
 
         private List<UserViewModel> GetAllUsersFromCompany(List<UserViewModel> allUsersFromDb, string companyName)

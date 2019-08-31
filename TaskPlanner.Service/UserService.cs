@@ -1,12 +1,10 @@
-﻿using AutoMapper;
-using System.Collections.Generic;
-using System.Linq;
-using TaskPlanner.Data;
-using TaskPlanner.Data.Models;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Service
+﻿namespace TaskPlanner.Service
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data;
+    using Data.Models;
+
     public class UserService : IUserService
     {
         private readonly TaskPlannerDbContext dbContext;

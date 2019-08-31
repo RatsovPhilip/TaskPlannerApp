@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Infrastructure;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+    using Data.Models;
+    using Infrastructure;
+
     public class CompanyCreateViewModel : IMapFrom<Company>
     {
         [Required(ErrorMessage = "Company name is required")]

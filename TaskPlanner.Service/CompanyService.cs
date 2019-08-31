@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using TaskPlanner.Data;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service.Common;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Service
+﻿namespace TaskPlanner.Service
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data;
+    using Data.Models;
+    using Common;
+    using ViewModels;
+
     public class CompanyService : ICompanyService
     {
         private readonly TaskPlannerDbContext dbContext;

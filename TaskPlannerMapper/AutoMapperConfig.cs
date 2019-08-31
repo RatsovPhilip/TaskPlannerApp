@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using AutoMapper.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace TaskPlanner.Infrastructure
+﻿namespace TaskPlanner.Infrastructure
 {
+    using AutoMapper;
+    using AutoMapper.Configuration;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
     public static class AutoMapperConfig
     {
         private static bool initialized;

@@ -1,13 +1,13 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Controllers
+﻿namespace TaskPlanner.Controllers
 {
+    using AutoMapper;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using Data.Models;
+    using Service;
+    using ViewModels;
+
     public class TimeSheetController : Controller
     {
         private readonly ITimeSheetService timeSheetService;

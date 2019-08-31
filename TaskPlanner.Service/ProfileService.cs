@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TaskPlanner.Data;
-using TaskPlanner.Data.Models;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Service
+﻿namespace TaskPlanner.Service
 {
+    using Data;
+    using Data.Models;
+    using ViewModels;
+
     public class ProfileService : IProfileService
     {
         private readonly TaskPlannerDbContext dbContext;
@@ -26,6 +23,11 @@ namespace TaskPlanner.Service
             user.FullName = viewModel.FullName;
 
             var image = this.userService.GetUserImage(viewModel.Id);
+
+            if(image == null)
+            {
+                image = new Image();
+            }
 
             image.ImageUrl = viewModel.Id + ".jpg";
 

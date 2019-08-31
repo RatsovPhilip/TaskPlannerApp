@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Infrastructure;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using Data.Models;
+    using Infrastructure;
+
     public class DailyAgendaByProjectNameViewModel : IMapFrom<DailyAgenda>
     {
         public string Id { get; set; }

@@ -1,23 +1,18 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Web.Controllers
+﻿namespace TaskPlanner.Web.Controllers
 {
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Data.Models;
+    using Service;
+    using ViewModels;
+
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IUserService userService;
         private readonly IProfileService profileService;
 
-        public ProfileController(UserManager<ApplicationUser> userManager, IUserService userService,IProfileService profileService)
+        public ProfileController(UserManager<ApplicationUser> userManager, IUserService userService, IProfileService profileService)
         {
             this.userManager = userManager;
             this.userService = userService;
@@ -34,15 +29,24 @@ namespace TaskPlanner.Web.Controllers
             }
 
             var image = this.userService.GetUserImage(userId);
+            var model = new ProfileEditViewModel();
 
-            var model = new ProfileEditViewModel
+            if (image == null)
             {
-                Email = user.Email,
-                FullName = user.FullName,
-                CompanyName = user.CompanyName,
-                Images = image.ImageUrl
+                model.Id = user.Id;
+                model.Email = user.Email;
+                model.FullName = user.FullName;
+                model.CompanyName = user.CompanyName;
 
-            };
+            }
+            else
+            {
+                model.Id = user.Id;
+                model.Email = user.Email;
+                model.FullName = user.FullName;
+                model.CompanyName = user.CompanyName;
+                model.Images = image.ImageUrl;
+            }
 
             return this.View(model);
         }
@@ -58,15 +62,24 @@ namespace TaskPlanner.Web.Controllers
 
             var image = this.userService.GetUserImage(userId);
 
-            var model = new ProfileEditViewModel
-            {
-                Id = user.Id,
-                Email = user.Email,
-                FullName = user.FullName,
-                CompanyName = user.CompanyName,
-                Images = image.ImageUrl
+            var model = new ProfileEditViewModel();
 
-            };
+            if (image == null)
+            {
+                model.Id = user.Id;
+                model.Email = user.Email;
+                model.FullName = user.FullName;
+                model.CompanyName = user.CompanyName;
+
+            }
+            else
+            {
+                model.Id = user.Id;
+                model.Email = user.Email;
+                model.FullName = user.FullName;
+                model.CompanyName = user.CompanyName;
+                model.Images = image.ImageUrl;
+            }
 
             return this.View(model);
         }
@@ -81,7 +94,7 @@ namespace TaskPlanner.Web.Controllers
                 viewModel.Images.CopyTo(file);
             }
 
-                return this.Redirect("/Profile/Me");
+            return this.Redirect("/Profile/Me");
         }
     }
 }

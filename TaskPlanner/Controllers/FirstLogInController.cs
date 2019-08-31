@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service;
-
-namespace TaskPlanner.Controllers
+﻿namespace TaskPlanner.Controllers
 {
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Data.Models;
+    using Service;
+
     public class FirstLogInController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;

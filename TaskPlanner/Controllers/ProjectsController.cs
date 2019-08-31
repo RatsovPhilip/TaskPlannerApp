@@ -1,16 +1,16 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using TaskPlanner.Data.Models;
-using TaskPlanner.Service;
-using TaskPlanner.Service.Common;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Controllers
+﻿namespace TaskPlanner.Controllers
 {
+    using AutoMapper;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data.Models;
+    using Service;
+    using Service.Common;
+    using ViewModels;
+
     public class ProjectsController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -54,7 +54,7 @@ namespace TaskPlanner.Controllers
             var userId = this.GetCurrentUserId();
 
             var user = this.userService.GetCurrentUserFromDb(userId);
-            if(user.CompanyName == null)
+            if (user.CompanyName == null)
             {
                 return this.Redirect("/");
             }

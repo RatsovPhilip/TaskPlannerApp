@@ -22,14 +22,14 @@
                                     <label asp-for="@Model.FullName"></label>
                                     <input asp-for="@Model.FullName" class="form-control" />
                                     <span asp-validation-for="@Model.FullName" class="text-danger"></span>
+                                    <hr />
+                                    <div>Company Name : @Model.CompanyName</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <div>Company Name : @Model.CompanyName</div>
-                                    <hr />
                                     <div>Profile picture :</div>
                                     <input type="file" name="Images">
                                 </div>

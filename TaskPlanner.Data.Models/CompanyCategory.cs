@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TaskPlanner.Data.Models
+﻿namespace TaskPlanner.Data.Models
 {
     public class CompanyCategory
     {

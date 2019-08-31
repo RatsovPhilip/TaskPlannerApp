@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using TaskPlanner.Data.Models;
-using TaskPlanner.ViewModels;
-
-namespace TaskPlanner.Service
+﻿namespace TaskPlanner.Service
 {
+    using Data.Models;
+    using ViewModels;
+
     public interface ICompanyService
     {
         void CreateCompany(CompanyCreateViewModel company, ApplicationUser user);

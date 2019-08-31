@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using Microsoft.AspNetCore.Http;
+    using System.ComponentModel.DataAnnotations;
+
     public class ProfileEditPostViewModel
     {
         public string Id { get; set; }

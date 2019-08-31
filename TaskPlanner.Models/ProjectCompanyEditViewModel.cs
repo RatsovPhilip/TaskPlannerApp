@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace TaskPlanner.ViewModels
+﻿namespace TaskPlanner.ViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class ProjectCompanyEditViewModel
     {
         [Required]

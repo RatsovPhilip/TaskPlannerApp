@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using TaskPlanner.Data.Models.Enums;
+    using Enums;
 
     public class DailyAgenda
     {

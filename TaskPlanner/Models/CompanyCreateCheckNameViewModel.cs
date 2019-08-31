@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskPlanner.Web.CustomValidationAttributes;
-
-namespace TaskPlanner.Web.Models
+﻿namespace TaskPlanner.Web.Models
 {
+    using System.ComponentModel.DataAnnotations;
+    using CustomValidationAttributes;
+
     public class CompanyCreateCheckNameViewModel
     {
         [Required(ErrorMessage = "Company name is required")]
