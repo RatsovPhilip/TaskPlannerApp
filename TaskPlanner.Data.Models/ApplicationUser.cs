@@ -25,5 +25,9 @@
         public virtual ICollection<DailyAgenda> DailyAgendas { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
+
+        public virtual ICollection<CreditCard> CreditCards { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

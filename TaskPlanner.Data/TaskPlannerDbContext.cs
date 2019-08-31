@@ -21,6 +21,8 @@
         public DbSet<TimeSheet> TimeSheets { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyCategory> CompanyCategories { get; set; }
+        public DbSet<CreditCard> CreditCards { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
