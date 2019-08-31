@@ -1,0 +1,43 @@
+﻿@using TaskPlanner.ViewModels;
+@model UserViewModel;
+@{
+    ViewData["Title"] = "Me";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row justify-content-center">
+    <div class="col-xl-12 col-lg-12 col-md-9">
+        <div class="card o-hidden border-bottom-danger shadow-lg my-5">
+            <div class="card-body p-3">
+                <h1 class="text-gray-900 text-center">My Profile</h1>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <div>Email : @Model.Email</div>
+                                <hr />
+                                <div>Full Name : @Model.FullName</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <div>Company Name : @Model.CompanyName</div>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="text-center">
+                    <form asp-area="" asp-controller="Profile" asp-action="Edit" method="get" asp-route-id="@Model.Id">
+                        <button type="submit" class="btn btn-outline-info mb-2 text-center">Edit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

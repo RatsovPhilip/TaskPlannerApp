@@ -15,7 +15,7 @@ namespace TaskPlanner.Service.Tests
         public void GetAllUsersFromDbShouldCollectAllUserFromDatabase()
         {
             var options = new DbContextOptionsBuilder<TaskPlannerDbContext>()
-                                .UseInMemoryDatabase(databaseName: "TimeSheet_AddEvent_Database")
+                                .UseInMemoryDatabase(databaseName: "Users_GetAll_Database")
                                 .Options;
 
             var dbContext = new TaskPlannerDbContext(options);
@@ -52,7 +52,7 @@ namespace TaskPlanner.Service.Tests
         public void GetCurrentUserFromDbShouldReturnCorrectUser()
         {
             var options = new DbContextOptionsBuilder<TaskPlannerDbContext>()
-                    .UseInMemoryDatabase(databaseName: "TimeSheet_AddEvent_Database")
+                    .UseInMemoryDatabase(databaseName: "Users_GetCurent_Database")
                     .Options;
 
             var dbContext = new TaskPlannerDbContext(options);
@@ -79,7 +79,7 @@ namespace TaskPlanner.Service.Tests
         public void PromoteUserShouldReturnTrue()
         {
             var options = new DbContextOptionsBuilder<TaskPlannerDbContext>()
-                                .UseInMemoryDatabase(databaseName: "TimeSheet_AddEvent_Database")
+                                .UseInMemoryDatabase(databaseName: "Users_Promote_Database")
                                 .Options;
 
             var dbContext = new TaskPlannerDbContext(options);
