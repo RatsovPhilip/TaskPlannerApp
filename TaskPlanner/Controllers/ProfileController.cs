@@ -5,6 +5,7 @@
     using Data.Models;
     using Service;
     using ViewModels;
+    using Microsoft.AspNetCore.Authorization;
 
     public class ProfileController : Controller
     {
@@ -19,6 +20,7 @@
             this.profileService = profileService;
         }
 
+        [Authorize]
         public IActionResult Me()
         {
             var userId = this.userManager.GetUserId(this.User);
@@ -51,6 +53,7 @@
             return this.View(model);
         }
 
+        [Authorize]
         public IActionResult Edit()
         {
             var userId = this.userManager.GetUserId(this.User);

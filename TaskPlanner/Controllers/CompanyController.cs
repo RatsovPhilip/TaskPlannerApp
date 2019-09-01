@@ -11,6 +11,7 @@
     using Service.Common;
     using ViewModels;
     using Web.Models;
+    using Microsoft.AspNetCore.Authorization;
 
     public class CompanyController : Controller
     {
@@ -30,6 +31,8 @@
             this.roleManager = roleManager;
             this.signInManager = signInManager;
         }
+
+        [Authorize]
         public IActionResult Create()
         {
             return this.View();
@@ -66,6 +69,7 @@
             return this.View();
         }
 
+        [Authorize]
         public IActionResult Join()
         {
             return this.View();
@@ -87,6 +91,7 @@
             return this.View();
         }
 
+        [Authorize]
         public IActionResult Promote()
         {
             var userId = GetCurrentUserId();

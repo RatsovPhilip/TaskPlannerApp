@@ -7,6 +7,7 @@
     using Data.Models;
     using Service;
     using ViewModels;
+    using Microsoft.AspNetCore.Authorization;
 
     public class TimeSheetController : Controller
     {
@@ -22,6 +23,8 @@
             this.projectService = projectService;
             this.userManager = userManager;
         }
+
+        [Authorize]
         public IActionResult Me(CompanyProjectViewModel viewModel)
         {
             var userId = GetCurrentUserId();

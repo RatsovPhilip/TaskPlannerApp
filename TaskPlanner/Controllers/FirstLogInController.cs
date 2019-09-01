@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Data.Models;
     using Service;
+    using Microsoft.AspNetCore.Authorization;
 
     public class FirstLogInController : Controller
     {
@@ -16,6 +17,7 @@
             this.userService = userService;
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             var userId = this.userManager.GetUserId(this.User);
